@@ -1,0 +1,115 @@
+﻿@{
+    
+}
+<div class="container_blue">
+    <div class="container__left">
+        <ul class="container__left-sidebar">
+            <a href="#" class="sidebar-items-text">
+            <li class="container__sidebar-items">
+                <img class="sidebar-items-icon"
+                     src="/Images/Home.png"
+                     alt="Home" />
+                <span class="sidebar-items-text">Trang Chủ</span>
+            </li>
+            </a>
+            <a href="#" class="sidebar-items-text">
+            <li class="container__sidebar-items">
+                <img class="sidebar-items-icon"
+                     src="/Images/User.png"
+                     alt="Home" />
+                <span class="sidebar-items-text">Trang cá nhân</span>
+            </li>
+            </a>
+            <a href="#" class="sidebar-items-text">
+            <li class="container__sidebar-items">
+                <img class="sidebar-items-icon"
+                     src="/Images/Savepost.png"
+                     alt="Home" />
+                <span class="sidebar-items-text">Bài đăng đã lưu</span>
+            </li>
+            </a>
+        </ul>
+        <ul class="container__left-message">
+            <div class="grid__left-message">
+                <span class="container__left-message--text"> Thông báo </span>
+                <i class="fa-solid fa-chevron-down container__left-message--icon"></i>
+            </div>
+        </ul>
+    </div>
+    <div class="container__center">
+        <a asp-action="PostStatus" class="container__center-user-post">
+            <div class="container__center-user-post">
+                    <span class="form__center-title">Tạo bài viết</span>
+            </div>
+        </a>
+        @if(Model != null)
+            @foreach (var items in Model)
+                {
+                    <div class="container__center-others-post">
+                        <div class="grid__center-others-post">
+                            <img class="center__img-others-post"
+                                 src="@items.AnhBaiPost"
+                                 alt="others-post" />
+                            <div class="center__bg-name-post">
+                                <img class="center__icon-others-post"
+                                     src="@items.AnhNguoiPost"
+                                     alt="User_img" />
+                                <span class="center__name-others-post">@items.TenNguoiPost</span>
+                            </div>
+                        </div>
+                        <div class="center__others-post-caption">@items.Caption</div>
+                        <div class="center__others-post-details">@items.MoTa</div>
+                    </div>
+                }
+        
+    </div>
+    <div class="container__right">
+        <ul class="container__right-sidebar">
+            <li class="container__right-items-head">
+                <span class="container__right-items-text"> Tin nhắn </span>
+                <i class="fa-solid fa-chevron-up container__left-message--icon"></i>
+            </li>
+            <li class="container__right-items">
+                <img class="right-items-icon"
+                     src="/images/User.png"
+                     alt="User_imgae" />
+                <div class="grid__right-items-username">
+                    <div class="right-items-username">Em</div>
+                    <div class="right-items-message">Sao anh chưa về</div>
+                </div>
+            </li>
+        </ul>
+        <ul class="container__right-sidebar">
+            <li class="container__right-items-head">
+                <span class="container__right-items-text"> Bạn bè </span>
+                <i class="fa-solid fa-chevron-up container__left-message--icon"></i>
+            </li>
+
+            <li class="container__right-items">
+                <img class="right-items-icon"
+                     src="/images/User.png"
+                     alt="User_imgae" />
+                <div class="grid__right-items-username">
+                    <div class="right-items-username">Huỳnh Gia Khiêm</div>
+                    <div class="right-items-message">Đang online</div>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="container__right-sidebar">
+            <li class="container__right-items-head">
+                <span class="container__right-items-text"> Nhóm </span>
+                <i class="fa-solid fa-chevron-up container__left-message--icon"></i>
+            </li>
+
+            <li class="container__right-items">
+                <img class="right-items-icon"
+                     src="/images/User.png"
+                     alt="User_imgae" />
+                <div class="grid__right-items-username">
+                    <div class="right-items-username">Hutech Group</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

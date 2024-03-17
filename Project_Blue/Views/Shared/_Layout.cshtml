@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue</title>
+    <link rel="stylesheet" href="/css/Home.css" type="text/css"/>
+    <script src="https://kit.fontawesome.com/30d0976aea.js"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <ul class="header__list">
+                <li class="header__list-items">
+                    <div class="header__grid-search">
+                        <div class="header__list-items-icon">
+                            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <input class="header__list-items-search"
+                               type="search"
+                               placeholder="Tìm kiếm trên Blue" />
+                    </div>
+                </li>
+                <li class="header__list-items">
+                    <a href="" class="header__bg-logo">
+                        <div class="header__text-logo">Blue</div>
+                    </a>
+                </li>
+                <li class="header__list-items">
+                    <div class="header__user-name-img">
+                        <div class="header__user-name">Huỳnh Gia Khiêm</div>
+                        <img src="/Images/Background_Login.png"
+                             alt="User_img"
+                             class="header__user-img" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+         @RenderBody()
+    <footer>
+        <div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
