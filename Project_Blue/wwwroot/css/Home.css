@@ -102,10 +102,10 @@ body {
 .container_blue {
     padding-top: 100px;
     display: grid;
-    grid-template-columns: 25% 50% 25%;
 }
 
 .container__left {
+    position: fixed;
     display: block;
     margin: 0 auto;
 }
@@ -177,6 +177,7 @@ body {
 }
 
 .container__center {
+    
     display: block;
     margin: 0 auto;
 }
@@ -226,6 +227,7 @@ body {
 }
 
 .form__user-post {
+    width: 100%;
     padding: 16px;
     background-color: rgba(240, 242, 245, 1);
     border-radius: 16px;
@@ -305,10 +307,86 @@ body {
     font-size: 16px;
     font-family: 'open sans',sans-serif;
 }
+.center__others-post-reaction {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    text-align: center;
+    border-top: 1px solid #bdcddd;
+}
+
+.grid__others-post-reaction {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    padding:10px;
+    border-radius: 10px;
+}
+
+.grid__others-post-reaction:hover {
+    background-color: #b8d9e7;
+}
+
+.others-post-react-icon {
+    margin-right: 10px;
+}
+
+.others-post-react-text {
+}
+
+.center__others-post-cmt {
+    display: none;
+    border-top: 1px solid #bdcddd;
+    list-style-type: none;
+    padding: 20px 30px;
+}
+
+.center__others-post-cmt.active {
+    display: block;
+}
+
+.others-post-cmt-items {
+    display: flex;
+    align-items: center;
+}
+
+.form__others-post-cmt-items {
+    display: flex;
+    align-items: center;
+}
+
+.post-cmt-items-img {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+}
+
+.grid__cmt-items {
+    font-family: 'open sans',sans-serif;
+    padding: 10px;
+    background-color: #c3c3e3;
+    border-radius: 16px;
+}
+
+.cmt-items-user-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.cmt-items-user-cmt {
+    font-size: 16px;
+}
 
 .container__right {
+    position:fixed;
     display: block;
     margin: 0 auto;
+    right:0;
 }
 
 .container__right-sidebar {

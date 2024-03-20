@@ -1,12 +1,15 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blue</title>
-    <link rel="stylesheet" href="/css/Home.css" type="text/css"/>
+    <link rel="stylesheet" href="~/css/Home.css" type="text/css" runat="server" />
     <script src="https://kit.fontawesome.com/30d0976aea.js"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 </head>
 <body>
     <header>
@@ -29,8 +32,8 @@
                 </li>
                 <li class="header__list-items">
                     <div class="header__user-name-img">
-                        <div class="header__user-name">Huỳnh Gia Khiêm</div>
-                        <img src="/Images/Background_Login.png"
+                        <div class="header__user-name">@ViewBag.TenUser</div>
+                        <img src="@ViewBag.AnhDaiDien"
                              alt="User_img"
                              class="header__user-img" />
                     </div>
@@ -43,9 +46,63 @@
         <div>
         </div>
     </footer>
+    <script>
+        var cmt = document.querySelectorAll(".comment_post");
+        var showcmt = document.querySelector(".center__others-post-cmt");
+        var showcmtAll = document.querySelectorAll(".center__others-post-cmt");
+        var reaction = document.querySelectorAll(".grid__others-post-reaction");
+        Array.from(reaction).forEach(function (reaction) {
+            reaction.addEventListener('click', function (event) {
+                event.preventDefault();
+            });
+        });
+        cmt.forEach(function (cmt, index) {
+            cmt.addEventListener('click', function (event) {
+                showcmtAll.forEach(function (e) {
+                    e.classList.remove('active');
+                });
+
+                showcmtAll[index].classList.toggle('active');
+            });
+        });
+       
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+     //   $('.form__others-post-cmt-items').submit(function (e) {
+        $(document).on('submit', '.form__others-post-cmt-items', function (e) { 
+            e.preventDefault();
+            var data_cmt = $('.center__others-post-cmt');
+            var formCmt = $(this).serializeArray();
+                $.ajax({
+                    url: '/Home/PostCmt',
+                    type: 'POST',
+                    data: formCmt,
+                    success: function (data) {
+                      loadComments()
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Loi");
+                        console.error(error);
+                    }
+                });
+        });
+
+        function loadComments() {
+            $.ajax({
+                url: '/Home/LoadCmt', 
+                type: 'GET',
+                success: function (response) {
+                    $('.center__others-post-cmt.active').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    </script>
 </body>
 </html>

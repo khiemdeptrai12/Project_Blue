@@ -7,9 +7,15 @@ namespace Project_Blue.Controllers
     public class LoginController : Controller
     {
         ProjectBlueContext db = new ProjectBlueContext();
+        
 
         public IActionResult Login()
         {
+            IDInterface.checkUserId = 0;
+            if(IDInterface.checkLogin == 0)
+            {
+                ViewBag.checkLogin = "You must Login!";
+            }
             return View();
         }
         [HttpPost]
@@ -21,7 +27,7 @@ namespace Project_Blue.Controllers
                 ModelState.AddModelError(string.Empty, "Incorrect Account or Password!");
                 return View("Login");
             }
-            CheckIDUser.check = ttcn.MaKhachHang;
+            IDInterface.checkUserId = ttcn.MaKhachHang;
             return RedirectToAction("Home","Home");
         }
       
@@ -36,6 +42,10 @@ namespace Project_Blue.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (thongTinCaNhan.AnhDaiDien == null)
+                {
+                    thongTinCaNhan.AnhDaiDien = "/Images/User.png";
+                }
                 db.ThongTinCaNhans.Add(thongTinCaNhan);
                 db.SaveChanges();
                 return RedirectToAction("Login","Login");

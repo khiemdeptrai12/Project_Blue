@@ -19,6 +19,8 @@ public partial class ProjectBlueContext : DbContext
 
     public virtual DbSet<BanBe> BanBes { get; set; }
 
+    public virtual DbSet<BinhLuan> BinhLuans { get; set; }
+
     public virtual DbSet<RoomChat> RoomChats { get; set; }
 
     public virtual DbSet<ThongTinCaNhan> ThongTinCaNhans { get; set; }
@@ -37,7 +39,6 @@ public partial class ProjectBlueContext : DbContext
 
             entity.Property(e => e.AnhBaiPost).HasMaxLength(50);
             entity.Property(e => e.AnhNguoiPost).HasMaxLength(50);
-            entity.Property(e => e.BinhLuan).HasMaxLength(50);
             entity.Property(e => e.Caption).HasMaxLength(50);
             entity.Property(e => e.MoTa).HasMaxLength(50);
             entity.Property(e => e.TenNguoiPost).HasMaxLength(50);
@@ -58,6 +59,17 @@ public partial class ProjectBlueContext : DbContext
                 .HasForeignKey(d => d.MaUser2)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_BanBe_ThongTinCaNhan1");
+        });
+
+        modelBuilder.Entity<BinhLuan>(entity =>
+        {
+            entity.HasKey(e => e.MaCmt);
+
+            entity.ToTable("BinhLuan");
+
+            entity.Property(e => e.AnhNguoiCmt).HasMaxLength(50);
+            entity.Property(e => e.NoiDungCmt).HasMaxLength(50);
+            entity.Property(e => e.TenNguoiCmt).HasMaxLength(50);
         });
 
         modelBuilder.Entity<RoomChat>(entity =>

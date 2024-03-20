@@ -23,6 +23,10 @@
   <body>
     <div class="container">
       <div class="container__left">
+            @if (ViewBag.checkLogin != null)
+            {
+                <div style="text-align:center;color:red;font-size:22px;">@ViewBag.checkLogin</div>
+            }
         <div class="container__left-logo">
           <div class="left-logo--bg">
             <div class="left-logo--text">Blue</div>
@@ -37,6 +41,7 @@
         </div>
             @using (Html.BeginForm())
             {
+
                 <form asp-action="Login" method="post">
                     <div class="grid-input">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

@@ -19,5 +19,4 @@ public partial class BaiPost
 
     public string MoTa { get; set; } = null!;
 
-    public string? BinhLuan { get; set; }
 }

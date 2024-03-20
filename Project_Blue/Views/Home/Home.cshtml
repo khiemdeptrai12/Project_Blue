@@ -1,6 +1,7 @@
 ﻿@{
-    
+   
 }
+@model Project_Blue.Models.PostACmt
 <div class="container_blue">
     <div class="container__left">
         <ul class="container__left-sidebar">
@@ -43,7 +44,7 @@
             </div>
         </a>
         @if(Model != null)
-            @foreach (var items in Model)
+            @foreach (var items in Model.BaiPostList)
                 {
                     <div class="container__center-others-post">
                         <div class="grid__center-others-post">
@@ -59,9 +60,61 @@
                         </div>
                         <div class="center__others-post-caption">@items.Caption</div>
                         <div class="center__others-post-details">@items.MoTa</div>
-                    </div>
+            <div class="center__others-post-reaction">
+                <a href="#" class="grid__others-post-reaction">
+                    <i class="fa-regular fa-heart others-post-react-icon"></i>
+                    <span class="others-post-react-text">Like</span>
+                </a>
+                <a href="#" class="grid__others-post-reaction comment_post">
+                    <i class="fa-regular fa-comment others-post-react-icon"></i>
+                    <span class="others-post-react-text">Comment</span>
+                </a>
+                <a href="#" class="grid__others-post-reaction">
+                    <i class="fa-regular fa-share-from-square others-post-react-icon"></i>
+                    <span class="others-post-react-text">Share</span>
+                </a>
+            </div>
+
+            <ul class="center__others-post-cmt">
+                @foreach (var item in Model.BinhLuanList){
+                    @if(items.MaBaiPost == item.MaBaiPost){
+                    <li class="others-post-cmt-items">
+                        <img class="post-cmt-items-img"
+                             src="@item.AnhNguoiCmt"
+                             alt="User_img" />
+                        <div class="grid__cmt-items">
+                            <div class="cmt-items-user-name">@item.TenNguoiCmt</div>
+                            <div class="cmt-items-user-cmt">@item.NoiDungCmt</div>
+                        </div>
+                    </li>
+                    }
                 }
-        
+             <form asp-action="PostCmt" class="form__others-post-cmt-items">
+              <img
+                class="post-cmt-items-img"
+                src="@ViewBag.AnhDaiDien"
+                alt="User_img"
+              />
+              <div class="form__user-post">
+                <input name="noiDungCmt"
+                  class="form__user-post-input"
+                  type="text"
+                  placeholder="Viết bình luận..."
+                />
+                
+                <input name="maBaiPost"
+                  value="@items.MaBaiPost"
+                  class="form__user-post-input"
+                  type="hidden"
+                  placeholder="Viết bình luận..."
+                />
+              <button type="submit">submit</button>
+              </div>
+            </form>
+            </ul>
+      </div>
+    }
+
     </div>
     <div class="container__right">
         <ul class="container__right-sidebar">

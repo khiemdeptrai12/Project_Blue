@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+        if ( item.MaBaiPost == ViewBag.maBaiPost)
+    {
+        <li class="others-post-cmt-items">
+            <img class="post-cmt-items-img"
+                 src="@item.AnhNguoiCmt"
+                 alt="User_img" />
+            <div class="grid__cmt-items">
+                <div class="cmt-items-user-name">@item.TenNguoiCmt</div>
+                <div class="cmt-items-user-cmt">@item.NoiDungCmt</div>
+            </div>
+        </li>
+    }
+}
+
+<form asp-action="PostCmt" class="form__others-post-cmt-items">
+    <img class="post-cmt-items-img"
+         src="/Images/User.png"
+         alt="User_img" />
+    <div class="form__user-post">
+        <input name="noiDungCmt"
+               class="form__user-post-input"
+               type="text"
+               placeholder="Viết bình luận..." />
+
+        <input name="maBaiPost"
+               value="@ViewBag.maBaiPost"
+               class="form__user-post-input"
+               type="hidden"
+               placeholder="Viết bình luận..." />
+        <button type="submit">submit</button>
+    </div>
+</form>
+
