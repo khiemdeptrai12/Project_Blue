@@ -8,7 +8,7 @@ html {
     font-family: 'Open Sans', sans-serif;
 }
 
-.container {
+.container_blue {
     width: 100%;
     display: flex;
     height: 800px;
@@ -38,7 +38,6 @@ html {
 
 .left-logo--text {
     color: white;
-    text-decoration: underline;
     font-size: 36px;
     font-family: cursive;
 }
@@ -154,7 +153,7 @@ html {
 
 .container__right--bg-img {
     position: relative;
-    background-image: url('/Images/Background_Login.png');
+    background-image: url('/imagesPost/Background_Login.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

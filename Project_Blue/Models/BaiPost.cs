@@ -11,12 +11,11 @@ public partial class BaiPost
 
     public int MaNguoiPost { get; set; }
 
-    public string TenNguoiPost { get; set; } = null!;
-
-    public string? AnhNguoiPost { get; set; }
-
     public string Caption { get; set; } = null!;
 
     public string MoTa { get; set; } = null!;
 
+    public int? QuantityReaction { get; set; }
+
+    public virtual ThongTinCaNhan MaNguoiPostNavigation { get; set; } = null!;
 }

@@ -1,0 +1,1355 @@
+{
+  "id": "48d309de-b4e4-4ca0-8e3b-0ec339976446",
+  "version": "2.0",
+  "name": "Bluee",
+  "url": "https://localhost:44329",
+  "tests": [{
+    "id": "9ac38813-5b2c-42fd-99ad-61a99f014970",
+    "name": "T1",
+    "commands": [{
+      "id": "c903c240-afd4-423b-ad4c-dd333a5cf81b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4f8eea2e-6438-491f-abc7-c70ad61f8162",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1517x713",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1407ff12-97d3-4dc8-b8cd-a3487275fbf4",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f910ea0-7b59-403f-a234-038e7420d002",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "kkhiem"
+    }, {
+      "id": "91ded1e3-bd21-4351-b916-4ee35379330f",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "12321"
+    }, {
+      "id": "10b34bc0-f791-4f01-ac04-046feb01596b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-login",
+      "targets": [
+        ["css=.submit-login", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng nhập')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "6c53e12e-475f-40ed-9b67-fd3b58799fe9",
+    "name": "T1 (1)",
+    "commands": [{
+      "id": "c845257d-a4e4-4a64-8a17-85a380aed119",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1e4ca6ce-40bd-42ce-a144-743d56e25d49",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1517x713",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dcfb44d2-2cf5-41d1-ad92-534bc3773ebb",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "629f527d-a51b-427f-bce6-6d0b99822f63",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Đăng ký tài khoản",
+      "targets": [
+        ["linkText=Đăng ký tài khoản", "linkText"],
+        ["css=.text-register", "css:finder"],
+        ["xpath=//a[contains(text(),'Đăng ký tài khoản')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/login/Register')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Đăng ký tài khoản')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d18cb7f2-8906-40c9-aad8-0b1a7452ef55",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c28b9d0-f7f6-4246-8074-53380467d159",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsadsa@gmail.com"
+    }, {
+      "id": "2f5339e2-2772-4f1f-8806-622de7de73ed",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "e31bb336-c675-4537-ac2f-5e04bb92ed4c",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "dc4f862f-0443-44cc-a3c5-0aed17e99807",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "6a149e19-d7e2-433b-a79d-745c719578f1",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd6a34e8-ce7d-4011-b2ea-128e05670f8c",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsadsa"
+    }, {
+      "id": "6a96f6b2-8e90-4145-9771-869bdab2a0aa",
+      "comment": "",
+      "command": "click",
+      "target": "css=form",
+      "targets": [
+        ["css=form", "css:finder"],
+        ["xpath=//form[@action='/login/Register']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"],
+        ["xpath=//form[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bdbed71c-5d25-4a67-af71-1767340181f5",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "442ae276-3a26-4a6c-b657-d1cda5f200d6",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "khiemdeptrai12"
+    }, {
+      "id": "9cb72aeb-c683-47eb-9688-70accd693fad",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "khiemdeptrai1222"
+    }, {
+      "id": "c28f3bc8-c745-47c4-a2c2-56223857981f",
+      "comment": "",
+      "command": "click",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07cd9e0d-d281-460b-b95c-897fc951d341",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "khiemvn412"
+    }, {
+      "id": "31f74222-9c34-487f-9de4-94d72dc356d9",
+      "comment": "",
+      "command": "click",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e9e804c5-e338-48a6-a009-4026b6962811",
+      "comment": "",
+      "command": "type",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "khiemvn412"
+    }, {
+      "id": "24254a6d-8bf1-4f1a-a68e-b30fedfeb50a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-login",
+      "targets": [
+        ["css=.submit-login", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "430f6ef1-e9b2-4136-a70c-b8d4877dc0ba",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "kkhiem"
+    }, {
+      "id": "b7a250fc-1017-4141-8821-a12fdf939ee5",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "12321"
+    }, {
+      "id": "88f62e1f-5ac8-40b1-bf4c-174968592cbf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-login",
+      "targets": [
+        ["css=.submit-login", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng nhập')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "208dac2b-f012-4ce9-9a90-22e03163e7d6",
+    "name": "T1 (1) (1)",
+    "commands": [{
+      "id": "2a1aac25-51cd-4cd8-a9f5-5f4f8d14a2ed",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "950bfe90-3c4a-4a55-9938-d6940dbc6d79",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1517x713",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be0bdbbf-43f7-4c17-b5d0-b5dc00e0d62e",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6a38d07-19e1-46c0-8367-27afb2932b9f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Đăng ký tài khoản",
+      "targets": [
+        ["linkText=Đăng ký tài khoản", "linkText"],
+        ["css=.text-register", "css:finder"],
+        ["xpath=//a[contains(text(),'Đăng ký tài khoản')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/login/Register')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Đăng ký tài khoản')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6fd73fd7-50e3-48fb-a7d0-8c10107ff657",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2d5ad9c-43a3-41f3-9375-b32ac9cefd9d",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsadsa@gmail.com"
+    }, {
+      "id": "596e9574-62c5-4504-bf3e-4c162fe283cc",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "c079c1eb-a27e-4ce4-a7bd-722746129b04",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "37a2c02f-41d2-4945-a9b4-bf9897704cff",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "362eeed8-2e69-4981-b191-7cc9cec39d8e",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b4c0aef4-870b-47fd-bd6c-9f197f03b62b",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsads2a@gmail.com"
+    }, {
+      "id": "c95ab968-d81c-4fb1-8f50-c479fc041e44",
+      "comment": "",
+      "command": "click",
+      "target": "css=form",
+      "targets": [
+        ["css=form", "css:finder"],
+        ["xpath=//form[@action='/login/Register']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"],
+        ["xpath=//form[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "de0bb3ec-e73e-427d-b24d-477407947abb",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae208d24-154d-426a-894f-a3d5c1bf25f5",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "kh"
+    }, {
+      "id": "3dd51198-b811-4c90-ae9a-a1ec8f5ecebf",
+      "comment": "",
+      "command": "click",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0875ddb3-8b43-4c07-be00-4c3e0b0d283d",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "khiemvn412"
+    }, {
+      "id": "c5cab378-da6b-46e9-bc9f-f95223c03cf8",
+      "comment": "",
+      "command": "click",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a1b4dbe-55c3-4645-920e-d8b836322a51",
+      "comment": "",
+      "command": "type",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "khiemvn412"
+    }, {
+      "id": "a12644f3-e73f-4f9a-a0c5-0cdea275621b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-login",
+      "targets": [
+        ["css=.submit-login", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e4fd88e-33f6-40f3-b990-e2c81c657c46",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "kkhiem"
+    }, {
+      "id": "d6695047-e08c-4aee-86c5-37add5f8479f",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "12321"
+    }, {
+      "id": "0ead9e6d-5d18-4e8b-8902-2c3bb1983068",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-login",
+      "targets": [
+        ["css=.submit-login", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng nhập')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "92686e7a-c949-4864-993f-c736197013a9",
+    "name": "T1 (1) (1) (1)",
+    "commands": [{
+      "id": "b6786d93-9905-4adc-95ff-cc3fd95665b7",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fcc39aaf-7929-4bbc-ac00-0aad479962ff",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1517x713",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b1fc0e93-d65b-49cd-87af-ede2520f78ea",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "767a9a37-9cff-4344-9a82-baf2059bdc8b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Đăng ký tài khoản",
+      "targets": [
+        ["linkText=Đăng ký tài khoản", "linkText"],
+        ["css=.text-register", "css:finder"],
+        ["xpath=//a[contains(text(),'Đăng ký tài khoản')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/login/Register')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Đăng ký tài khoản')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "79cb23bb-0f23-44b5-9a0a-2ef7ccd5a305",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c1d3fd6-166c-4850-9414-bea7ad6a0f1d",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsadsa@gmail.com"
+    }, {
+      "id": "af6e26e1-cc5f-4b12-9e7d-cd2e6eb5d767",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "f1cab086-5ce9-4621-bf42-7ce925e7687a",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "d47ad923-29c9-461d-84ee-8780162c05c9",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "9281b5c6-ab8d-4210-84c2-dfdfc143f93d",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cfc54955-7fd6-4daf-9756-5cdcf432a6a0",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsads2a@gmail.com"
+    }, {
+      "id": "b4adbd9c-acf4-44ad-87e3-f3d24bbc5cfc",
+      "comment": "",
+      "command": "click",
+      "target": "css=form",
+      "targets": [
+        ["css=form", "css:finder"],
+        ["xpath=//form[@action='/login/Register']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"],
+        ["xpath=//form[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d65abf63-c340-497d-825f-909c8086159e",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4236563c-8649-4d10-862c-2dce5b6dd5a3",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "kh"
+    }, {
+      "id": "62ce3c89-5f90-4820-9a35-c579947bdd16",
+      "comment": "",
+      "command": "click",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4ba51a8-f895-4472-af5b-41016c9707c2",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "Khiemvn412!"
+    }, {
+      "id": "144725af-bc5d-4f1c-953f-569933dd6248",
+      "comment": "",
+      "command": "click",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fb3e1f0-54b1-4d30-80f4-6d2e25c0e6e2",
+      "comment": "",
+      "command": "type",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "Khiem"
+    }, {
+      "id": "252734f5-56db-4f8c-b6ed-479c19337001",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-login",
+      "targets": [
+        ["css=.submit-login", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e37058af-8091-4240-a823-b053aa512d97",
+    "name": "T1 (1) (1) (1) (1)",
+    "commands": [{
+      "id": "f4644f9b-52f4-495e-89e0-afa0da57a09d",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ff0aa96-8e93-4d49-a29b-868524e453ff",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1517x713",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9fc6f3ec-8c8d-45d7-b44f-d3a4df3fbcf8",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eec660ba-9d65-42a4-8aff-6847419809e1",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Đăng ký tài khoản",
+      "targets": [
+        ["linkText=Đăng ký tài khoản", "linkText"],
+        ["css=.text-register", "css:finder"],
+        ["xpath=//a[contains(text(),'Đăng ký tài khoản')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/login/Register')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Đăng ký tài khoản')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec1a2678-0285-4c47-8b35-ef759f68fe74",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "42ed91f3-03b4-4184-810e-3556b6f4c62c",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsadsa@gmail.com"
+    }, {
+      "id": "5fac7b8f-3418-4fa7-a2c1-992ceb4cab18",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "c9346d2f-311e-4ffd-b3dc-99eec390c544",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "881c98cc-4773-4082-995f-0e34e889400a",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "70593ed6-1bba-42c7-be80-0aed44489e45",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5fd9166-ea81-41a8-8dd5-5b3be555113f",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsads2a@gmail.com"
+    }, {
+      "id": "0d459774-f5f4-4132-9741-fe58ef778ed7",
+      "comment": "",
+      "command": "click",
+      "target": "css=form",
+      "targets": [
+        ["css=form", "css:finder"],
+        ["xpath=//form[@action='/login/Register']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"],
+        ["xpath=//form[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bcc886e3-4ef7-41c1-8564-8bf21a1d6782",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "99edc1ac-d670-43cb-a9c2-33295fda79ed",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "kh"
+    }, {
+      "id": "dfaf1347-3d34-4434-be05-409b12777756",
+      "comment": "",
+      "command": "click",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad328d3c-db4f-4a0d-b23f-c38e3accb208",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "Khiemvn412!"
+    }, {
+      "id": "899ad382-94f3-4215-afb3-661325b9cb03",
+      "comment": "",
+      "command": "click",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c270aa2c-a309-44eb-b100-a1bd7a5524bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "Khiem"
+    }, {
+      "id": "c66dd082-cb25-4df3-9b61-1febd3a396b3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-login",
+      "targets": [
+        ["css=.submit-login", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "705ed80c-3a42-492f-8741-0456da3278d3",
+    "name": "T1 (1) (1) (1) (1) (1)",
+    "commands": [{
+      "id": "df60876e-7cf6-4b1d-a42f-35df983141c0",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0deca6ef-7c66-4229-b9e2-4c06f29f4d23",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1517x713",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "da1897bd-c301-4e2d-a023-6aeab30ad015",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "37061906-b4a5-48a5-997d-3723916edf57",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Đăng ký tài khoản",
+      "targets": [
+        ["linkText=Đăng ký tài khoản", "linkText"],
+        ["css=.text-register", "css:finder"],
+        ["xpath=//a[contains(text(),'Đăng ký tài khoản')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/login/Register')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Đăng ký tài khoản')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "77d10404-0a86-4373-8f24-d9048bb11db5",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "82c17be1-6caf-4fae-9493-fd24c9ecd1ac",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsadsa@gmail.com"
+    }, {
+      "id": "6ec74e60-2ec7-42bb-bdb6-83f536416a4a",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "4437aa8d-ecee-495e-9a98-fe361e7401d1",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "f59e689e-1dc9-4de1-9140-ae1f59598c34",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "68.16249084472656,42"
+    }, {
+      "id": "4d13fe6a-0e33-43c6-a204-b8f6dae9b982",
+      "comment": "",
+      "command": "click",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "12102936-354d-4360-a0bd-977601ca4610",
+      "comment": "",
+      "command": "type",
+      "target": "id=Gmail",
+      "targets": [
+        ["id=Gmail", "id"],
+        ["name=Gmail", "name"],
+        ["css=#Gmail", "css:finder"],
+        ["xpath=//input[@id='Gmail']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dsads2a@gmail.com"
+    }, {
+      "id": "2d281bed-6893-4882-9f94-ef7854080928",
+      "comment": "",
+      "command": "click",
+      "target": "css=form",
+      "targets": [
+        ["css=form", "css:finder"],
+        ["xpath=//form[@action='/login/Register']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"],
+        ["xpath=//form[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "33df1f45-80b3-46af-831d-b56165c88ec6",
+      "comment": "",
+      "command": "click",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3122f5e3-b9f1-4ed2-9276-cad2886b6973",
+      "comment": "",
+      "command": "type",
+      "target": "id=UserName",
+      "targets": [
+        ["id=UserName", "id"],
+        ["name=UserName", "name"],
+        ["css=#UserName", "css:finder"],
+        ["xpath=//input[@id='UserName']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "khiemvn213"
+    }, {
+      "id": "75e656e3-218d-4c44-9a7f-b15ccf8a8668",
+      "comment": "",
+      "command": "click",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "775c0967-80f1-4433-a957-824460f00471",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "Khiemvn412!"
+    }, {
+      "id": "bde92fc7-df61-45dc-a406-ba492b896303",
+      "comment": "",
+      "command": "click",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80f0488e-cc0d-4a1b-8061-248e00a87a12",
+      "comment": "",
+      "command": "type",
+      "target": "id=ConfirmPassword",
+      "targets": [
+        ["id=ConfirmPassword", "id"],
+        ["css=#ConfirmPassword", "css:finder"],
+        ["xpath=//input[@id='ConfirmPassword']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "Khiemvn412!"
+    }, {
+      "id": "cc82f7ea-878e-483b-8467-ae1bb312ddf4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-login",
+      "targets": [
+        ["css=.submit-login", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đăng ký')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "13ac214b-2c1a-43c7-8031-12922f724dec",
+    "name": "Test",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["9ac38813-5b2c-42fd-99ad-61a99f014970", "6c53e12e-475f-40ed-9b67-fd3b58799fe9", "208dac2b-f012-4ce9-9a90-22e03163e7d6", "92686e7a-c949-4864-993f-c736197013a9", "e37058af-8091-4240-a823-b053aa512d97", "705ed80c-3a42-492f-8741-0456da3278d3"]
+  }],
+  "urls": ["https://localhost:44329/"],
+  "plugins": []
+}

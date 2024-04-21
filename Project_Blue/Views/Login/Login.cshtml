@@ -14,14 +14,11 @@
     <title>Login</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/Login.css" />
-    <script
-      src="https://kit.fontawesome.com/30d0976aea.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="/fontawesome-free-6.5.2-web/css/all.css" />
   </head>
 
   <body>
-    <div class="container">
+    <div class="container_blue">
       <div class="container__left">
             @if (ViewBag.checkLogin != null)
             {
@@ -47,9 +44,16 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     </div>
                     <div class="grid-input">
+                        <span style="display:block" asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="grid-input">
                         <input asp-for="UserName"
                                class="input-login"
-                               placeholder="Tên đăng nhập" />
+                               placeholder="Tên đăng nhập" 
+                               value=""/>
+                    </div>
+                    <div class="grid-input">
+                        <span style="display:block" asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="grid-input">
                         <input asp-for="Password"
@@ -76,11 +80,11 @@
         <div class="container__right--bg-img">
           <div class="right--grid-img-login">
             <div class="right--grid-img-login-text">
-              MẠNG XÃ HỘI CỦA NGƯỜI VIỆT
+                  MẠNG XÃ HỘI CỦA NGƯỜI VIỆT
             </div>
             <img
               class="right--img-login"
-              src="/Images/Image_Login.png"
+              src="/imagesPost/Image_Login.png"
               alt="image_social_netword"
             />
           </div>

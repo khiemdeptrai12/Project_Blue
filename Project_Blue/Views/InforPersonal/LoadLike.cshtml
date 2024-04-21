@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+    int checkReact = 0;
+    int quantityReact = 0;
+}
+@model Project_Blue.Models.PostACmt
+@foreach (var react in Model.reactionPosts)
+{
+    if (react.IdPost == @ViewBag.postId)
+    {
+        quantityReact += 1;
+        if (react.IdUser == ViewBag.IdUser)
+        {
+            checkReact = 1;
+        }
+    }
+}
+@if (checkReact == 0)
+{
+    <form asp-action="ReactionPost" class="form__like_post">
+        <input asp-for="@Model.ReactionPost.IdUser" type="hidden" value="@ViewBag.IdUser" />
+        <input asp-for="@Model.ReactionPost.IdPost" type="hidden" value="@ViewBag.postId" />
+        <button data-post-id="@ViewBag.postId" class="like__btn-post" type="submit">
+            <i class="fa-solid fa-heart others-post-react-icon like__icon-post"></i>
+            <span>@quantityReact</span>
+            <span class="others-post-react-text">Like</span>
+        </button>
+    </form>
+}
+else
+{
+    <form asp-action="ReactionPost" class="form__like_post">
+        <input asp-for="@Model.ReactionPost.IdUser" type="hidden" value="@ViewBag.IdUser" />
+        <input asp-for="@Model.ReactionPost.IdPost" type="hidden" value="@ViewBag.postId" />
+        <button data-post-id="@ViewBag.postId" class="like__btn-post" type="submit">
+            <i class="fa-solid fa-heart others-post-react-icon like__icon-post active"></i>
+            <span>@quantityReact</span>
+            <span class="others-post-react-text">Like</span>
+        </button>
+    </form>
+}

@@ -9,6 +9,9 @@
     <form asp-action="BaiPost" class="form__center-user-post"
           enctype="multipart/form-data">
             <span class="form__center-title">Tạo bài viết</span>
+                <input asp-for="MaNguoiPost"
+                       type="hidden"
+                       value="@ViewBag.idUser" />
             <div class="form__user-post">
                 <input asp-for="Caption"
                        class="form__user-post-input"

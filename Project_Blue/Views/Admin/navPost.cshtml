@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<table class="content__admin-tb-user">
+        <thead>
+            <tr class="admin__tb-user-tr-head">
+                <th class="admin__tb-user-head">Delete</th>
+                <th class="admin__tb-user-head">Mã bài post</th>
+                <th class="admin__tb-user-head">Ảnh bài post</th>
+                <th class="admin__tb-user-head">Mã người post</th>
+                <th class="admin__tb-user-head">Tên người post</th>
+                <th class="admin__tb-user-head">Ảnh người post</th>
+                <th class="admin__tb-user-head">Caption</th>
+                <th class="admin__tb-user-head">Chi tiết mô tả</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+        <tbody>
+            <tr class="admin__tb-user-tr-body">
+                <td class="admin__tb-user-body">
+                    <form id="formDeletePost"  method="post">
+                        <input name="id" type="hidden" value="@item.MaBaiPost" />
+                        <button class="btn__delete_admin" type="submit">Delete</button>
+                    </form>
+                </td>
+                <td class="admin__tb-user-body">@item.MaBaiPost</td>
+                @if (item.AnhBaiPost != null)
+                {
+                    <td class="admin__tb-user-body">
+                        <img style="width:50px;height:50px" src="@item.AnhBaiPost" alt="Alternate Text" />
+                    </td>
+                }
+                else
+                {
+                    <td class="admin__tb-user-body">No Image</td>
+                }
+                <td class="admin__tb-user-body">@item.MaNguoiPost</td>
+                <td class="admin__tb-user-body">@item.MaNguoiPostNavigation.TenKhachHang</td>
+                <td class="admin__tb-user-body">
+                    <img style="width:50px;height:50px" src="@item.MaNguoiPostNavigation.AnhDaiDien" alt="Alternate Text" />
+                </td>
+                <td class="admin__tb-user-body">@item.Caption</td>
+                <td class="admin__tb-user-body">@item.MoTa</td>
+            </tr>
+        </tbody>
+        }
+</table>
