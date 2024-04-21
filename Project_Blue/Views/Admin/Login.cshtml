@@ -1,0 +1,89 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model Project_Blue.Models.Admin
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/Login.css" />
+    <link rel="stylesheet" href="/fontawesome-free-6.5.2-web/css/all.css" />
+</head>
+
+<body>
+    <div class="container_blue">
+        <div class="container__left">
+            @if (ViewBag.checkLogin != null)
+            {
+                <div style="text-align:center;color:red;font-size:22px;">@ViewBag.checkLogin</div>
+            }
+            <div class="container__left-logo">
+                <div class="left-logo--bg">
+                    <div class="left-logo--text">Blue</div>
+                </div>
+            </div>
+            <div class="container__left--grid-text">
+                <div class="left-text-up">Đăng Nhập</div>
+                <div class="left-text-down">Login To Enjoy Your Life !</div>
+            </div>
+            <div class="left-text-decription">
+                Đăng nhập hoặc đăng ký (miễn phí)
+            </div>
+            @using (Html.BeginForm())
+            {
+
+                <form asp-action="Login" method="post">
+                    <div class="grid-input">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="grid-input">
+                        <span style="display:block" asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="grid-input">
+                        <input asp-for="Username" 
+                               class="input-login"
+                               placeholder="Tên đăng nhập"
+                               value="" />
+                    </div>
+                    <div class="grid-input">
+                        <span style="display:block" asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="grid-input">
+                        <input asp-for="Password" 
+                               class="input-login"
+                               type="password"
+                               placeholder="Mật khẩu" />
+                        <!-- <i class="fa-solid fa-eye-slash icon_hide--pw"></i> -->
+                    </div>
+                    <div class="grid-input">
+                        <button class="submit-login" type="submit">Đăng nhập</button>
+                    </div>
+                </form>
+            }
+            <ul class="container__left--text-footer">
+                <li class="text-footer-login">
+                    <span class="text-forgot_pw">Quên mật khẩu</span>
+                </li>
+            </ul>
+        </div>
+        <div class="container__right">
+            <div class="container__right--bg-img">
+                <div class="right--grid-img-login">
+                    <div class="right--grid-img-login-text">
+                        MẠNG XÃ HỘI CỦA NGƯỜI VIỆT
+                    </div>
+                    <img class="right--img-login"
+                         src="/imagesPost/Image_Login.png"
+                         alt="image_social_netword" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

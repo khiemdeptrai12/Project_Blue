@@ -7,7 +7,9 @@ public partial class RoomChat
 {
     public int MaPhong { get; set; }
 
-    public string TenPhong { get; set; } = null!;
+    public string? TenPhong { get; set; }
+
+    public string? ImageUser { get; set; }
 
     public string? NoiDung { get; set; }
 

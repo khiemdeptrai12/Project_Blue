@@ -1,0 +1,218 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông tin cá nhân</title>
+    <link rel="stylesheet" href="/css/IP.css" type="text/css" runat="server" />
+    <link rel="stylesheet" href="/fontawesome-free-6.5.2-web/css/all.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <ul class="header__list">
+                <li class="header__list-items">
+                    <div class="header__grid-search">
+                        <form class="header__grid-search" id="searchUser" asp-controller="Home" asp-action="SeachUser">
+                            <button style="border: none;border-radius:16px" type="submit" class="header__list-items-icon">
+                                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                            </button>
+                            <input name="NameSearch"
+                                   id="id_search_head"
+                                   class="header__list-items-search"
+                                   type="search"
+                                   placeholder="Tìm kiếm trên Blue" />
+                            <input name="idUser"
+                                   id="id_user"
+                                   type="hidden"
+                                   value="@ViewBag.IdinforUser" />
+                        </form>
+                        <div class="header__search--user">
+                        </div>
+                    </div>
+                </li>
+                <li class="header__list-items">
+                    <a href="#" class="header__bg-logo">
+                        <div class="header__text-logo">Blue</div>
+                    </a>
+                </li>
+                <li class="header__list-items">
+                    <div class="header__user-name-img">
+                        <div class="header__user-name">@ViewBag.TenUser</div>
+                        <img src="@ViewBag.AnhDaiDien"
+                             alt="User_img"
+                             class="header__user-img" />
+                        <ul class="show__menu-header-user">
+                            <li class="show__menu-header-items">
+                                <a asp-controller="InforPersonal" asp-action="Index" asp-route-id="@ViewBag.IdinforUser"
+                                   asp-route-checkLogin="1" asp-route-idUser="@ViewBag.IdinforUser" class="menu-header-item-btn">
+                                    <img class="menu-header-item-img"
+                                         src="/imagesPost/Home.png"
+                                         alt="imgTrangCaNhan" />
+                                    <span class="menu-header-item-text">Trang cá nhân</span>
+                                </a>
+                            </li>
+                            <li class="show__menu-header-items">
+                                <a asp-controller="Login" asp-action="Logout" class="menu-header-item-btn">
+                                    <img class="menu-header-item-img"
+                                         src="@ViewBag.AnhDaiDien"
+                                         alt="imgTrangCaNhan" />
+                                    <span class="menu-header-item-text">Đăng xuất</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    @RenderBody()
+    <footer>
+        <div>
+        </div>
+    </footer>
+    <script>
+        var cmt = document.querySelectorAll(".comment_post");
+        var showcmt = document.querySelector(".center__others-post-cmt");
+        var showcmtAll = document.querySelectorAll(".center__others-post-cmt");
+        var reaction = document.querySelectorAll(".grid__others-post-reaction");
+        Array.from(reaction).forEach(function (reaction) {
+            reaction.addEventListener('click', function (event) {
+                event.preventDefault();
+            });
+        });
+        cmt.forEach(function (cmt, index) {
+            cmt.addEventListener('click', function (event) {
+                showcmtAll.forEach(function (e) {
+                    e.classList.remove('active');
+                });
+
+                showcmtAll[index].classList.toggle('active');
+            });
+        });
+
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(document).on('submit', '.form__others-post-cmt-items', function (e) {
+            e.preventDefault();
+            var formCmt = $(this).serializeArray();
+            $.ajax({
+                url: '/InforPersonal/PostCmt',
+                type: 'POST',
+                data: formCmt,
+                success: function (data) {
+                    loadComments()
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        function loadComments() {
+            $.ajax({
+                url: '/InforPersonal/LoadCmt',
+                type: 'GET',
+                success: function (response) {
+                    $('.center__others-post-cmt.active').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        $(document).on('submit', '#searchUser', function (e) {
+            e.preventDefault();
+            var idUser = $('#id_user').val();
+            var NameSearch = $('#id_search_head').val();
+            var formSearch = $(this).serialize();
+            $.ajax({
+                url: '/Home/SeachUser',
+                type: 'POST',
+                data: formSearch + "&NameSearch=" + NameSearch + "&idUser=" + idUser,
+                success: function (data) {
+                    loadSearch()
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        function loadSearch() {
+            var idUser = $('#id_user').val();
+            $.ajax({
+                url: '/Home/GetSearchUser',
+                type: 'GET',
+                data: { idUser: idUser },
+                success: function (response) {
+                    $('.header__search--user').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+        
+        var SearchInput = document.querySelector('.header__list-items-search');
+        var ShowSearch = document.querySelector('.header__search--user');
+
+        SearchInput.addEventListener('focus', function () {
+            ShowSearch.style.display = 'block';
+        });
+
+        ShowSearch.addEventListener('mousedown', function (event) {
+            isClickedInside = true;
+        });
+
+        SearchInput.addEventListener('blur', function () {
+            if (!isClickedInside) {
+                ShowSearch.style.display = 'none';
+            }
+            isClickedInside = false;
+        });
+        var show_menu = document.querySelector('.show__menu-header-user');
+        var img_user = document.querySelector('.header__user-img');
+        img_user.onclick = function (e) {
+            show_menu.classList.toggle('active');
+        }
+        //Share post 
+        $(document).on('submit', '.form__others-post-cmt-share', function (e) {
+            e.preventDefault();
+            var formCmtShare = $(this).serializeArray();
+            $.ajax({
+                url: '/InforPersonal/PostCmtShared',
+                type: 'POST',
+                data: formCmtShare,
+                success: function (data) {
+                    loadCommentShare()
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        function loadCommentShare() {
+            $.ajax({
+                url: '/InforPersonal/LoadCmtShared',
+                type: 'GET',
+                success: function (response) {
+                    $('.center__others-post-cmt.active').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+        // End share post 
+    </script>
+</body>
+</html>

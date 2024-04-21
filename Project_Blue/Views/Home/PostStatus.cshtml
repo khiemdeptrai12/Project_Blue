@@ -5,15 +5,28 @@
 }
 @model Project_Blue.Models.BaiPost
 <div style="margin: 0 auto; display:block; width:100%; padding: 100px 0">
+    <div>
+        <a asp-controller="home" asp-action="home" 
+        asp-route-id="@ViewBag.idUser" asp-route-checkLogin="1" class="back__home">Quay lại trang chủ</a>
+    </div>
     <div style="margin:0 auto" class="container__center-user-post-main">
-    <form asp-action="BaiPost" class="form__center-user-post"
+        <form asp-action="BaiPost" class="form__center-user-post"
           enctype="multipart/form-data">
             <span class="form__center-title">Tạo bài viết</span>
+                <input asp-for="MaNguoiPost"
+                       type="hidden"
+                       value="@ViewBag.idUser" />
+            <div class="grid-input">
+                <span style="display:block;color:red" asp-validation-for="Caption" class="text-danger"></span>
+            </div>
             <div class="form__user-post">
                 <input asp-for="Caption"
                        class="form__user-post-input"
                        type="text"
                        placeholder="Caption" />
+            </div>
+            <div class="grid-input">
+                <span style="display:block;color:red" asp-validation-for="MoTa" class="text-danger"></span>
             </div>
             <div class="form__user-post">
                 <input asp-for="MoTa"
@@ -26,10 +39,12 @@
                        asp-for="AnhBaiPost"
                        class="form__user-post-img"/>
             </div>
+            <input type="hidden" asp-for="PostedTime" value="@DateTime.Now" />
             <div class="form__user-post">
                 <button type="submit" class="submit-post">Đăng</button>
             </div>
-    </form>
+        </form>
+    
 </div>
 
 </div>

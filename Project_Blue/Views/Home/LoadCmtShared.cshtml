@@ -1,0 +1,148 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+    int check = 0;
+}
+@model Project_Blue.Models.PostACmt
+@*
+@foreach (var item in Model.BinhLuanList)
+{
+    if (item.MaBaiPost == ViewBag.maBaiPost)
+    {
+        <li class="others-post-cmt-items">
+            <img class="post-cmt-items-img"
+                 src="@item.IdUserCmtNavigation.AnhDaiDien"
+                 alt="User_img" />
+            <div class="grid__cmt-items">
+                <div class="cmt-items-user-name">@item.IdUserCmtNavigation.TenKhachHang</div>
+                <div class="cmt-items-user-cmt">@item.NoiDungCmt</div>
+            </div>
+            <a asp-action="DeleteCmt" asp-route-idCmt="@item.MaCmt" asp-route-id="@ViewBag.idUser">
+                <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+            </a>
+        </li>
+    }
+}
+
+<form asp-action="PostCmt" class="form__others-post-cmt-items">
+    <img class="post-cmt-items-img"
+         src="@ViewBag.AnhUser"
+         alt="User_img" />
+    <div class="form__user-post">
+        <input asp-for="@Model.binhLuan.NoiDungCmt"
+               class="form__user-post-input"
+               type="text"
+               placeholder="Viết bình luận..." />
+
+        <input asp-for="@Model.binhLuan.MaBaiPost"
+               value="@ViewBag.maBaiPost"
+               type="hidden"
+               placeholder="Viết bình luận..." />
+        <input value="@ViewBag.idUser"
+               asp-for="@Model.binhLuan.IdUserCmt"
+               type="hidden" />
+        <button class="form__user-post-submit" type="submit">Gửi</button>
+    </div>
+</form>
+*@
+@if (ViewBag.maNguoiPost == ViewBag.IdUser)
+{
+    @foreach (var binhluan in Model.BinhLuanShares)
+    {
+        if (binhluan.MaShare == ViewBag.maBaiPost)
+        {
+            check = 1;
+            <li class="others-post-cmt-items">
+                <img class="post-cmt-items-img"
+                     src="@binhluan.IdUserCmtShareNavigation.AnhDaiDien"
+                     alt="User_img" />
+                <div class="grid__cmt-items">
+                    <div class="cmt-items-user-name">@binhluan.IdUserCmtShareNavigation.TenKhachHang</div>
+                    <div class="cmt-items-user-cmt">@binhluan.NoiDungCmtShare</div>
+                </div>
+
+                <form asp-action="DeleteCmtShared" class="form__icon-remove-cmtshare">
+                    <input name="id" type="hidden" value="@ViewBag.IdUser" />
+                    <input name="idCmt" type="hidden" value="@binhluan.MaCmtShare" />
+                    <button type="submit" style=" background-color: transparent;
+                                        border: none; ">
+                        <i class="fa-solid fa-xmark icon-remove-cmtshare"></i>
+                    </button>
+                </form>
+            </li>
+
+        }
+
+    }
+
+}
+
+
+@if (check == 0)
+{
+    @foreach (var binhluan in Model.BinhLuanShares)
+    {
+        if (binhluan.MaShare == ViewBag.maBaiPost)
+        {
+            if (binhluan.IdUserCmtShare == ViewBag.IdUser)
+            {
+                <li class="others-post-cmt-items">
+                    <img class="post-cmt-items-img"
+                         src="@binhluan.IdUserCmtShareNavigation.AnhDaiDien"
+                         alt="User_img" />
+                    <div class="grid__cmt-items">
+                        <div class="cmt-items-user-name">@binhluan.IdUserCmtShareNavigation.TenKhachHang</div>
+                        <div class="cmt-items-user-cmt">@binhluan.NoiDungCmtShare</div>
+                    </div>
+                    <form asp-action="DeleteCmtShared" class="form__icon-remove-cmtshare">
+                        <input name="id" type="hidden" value="@ViewBag.IdUser" />
+                        <input name="idCmt" type="hidden" value="@binhluan.MaCmtShare" />
+                        <button type="submit" style=" background-color: transparent;
+                                        border: none; ">
+                            <i class="fa-solid fa-xmark icon-remove-cmtshare"></i>
+                        </button>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li class="others-post-cmt-items">
+                    <img class="post-cmt-items-img"
+                         src="@binhluan.IdUserCmtShareNavigation.AnhDaiDien"
+                         alt="User_img" />
+                    <div class="grid__cmt-items">
+                        <div class="cmt-items-user-name">@binhluan.IdUserCmtShareNavigation.TenKhachHang</div>
+                        <div class="cmt-items-user-cmt">@binhluan.NoiDungCmtShare</div>
+                    </div>
+                </li>
+
+
+
+            }
+        }
+
+    }
+}
+
+<form asp-action="PostCmtShared" class="form__others-post-cmt-share">
+    <img class="post-cmt-items-img"
+         src="@ViewBag.AnhUser"
+         alt="User_img" />
+    <div class="form__user-post">
+        <input asp-for="@Model.BinhLuanShare.NoiDungCmtShare"
+               class="form__user-post-input"
+               type="text"
+               placeholder="Viết bình luận..." />
+
+        <input asp-for="@Model.BinhLuanShare.MaShare"
+               value="@ViewBag.maBaiPost"
+               type="hidden"
+               placeholder="Viết bình luận..." />
+        <input value="@ViewBag.IdUser"
+               asp-for="@Model.BinhLuanShare.IdUserCmtShare"
+               type="hidden" />
+        <button class="form__user-post-submit" type="submit">Gửi</button>
+    </div>
+</form>

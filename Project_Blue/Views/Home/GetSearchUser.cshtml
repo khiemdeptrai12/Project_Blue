@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+    int check = 0;
+}
+@if (ViewBag.NameSearch != "empty")
+{
+    @foreach (var item in Model)
+    {
+        if (item.TenKhachHang == ViewBag.NameSearch || item.Sdt == ViewBag.NameSearch)
+        {
+            <a asp-controller="InforPersonal" asp-action="Index" asp-route-id="@item.MaKhachHang"
+               asp-route-checkLogin="1" asp-route-idUser="@ViewBag.idUser" style="padding: 10px" class="header__grid--infor-user">
+                    <img src="@item.AnhDaiDien"
+                         alt="imageUser"
+                         class="header__infor-userimage" />
+                    <h1 class="header__infor-username">@item.TenKhachHang</h1>
+            </a>
+            check = 1;
+        }
+    }
+    if(check == 0)
+    {
+        <div style="padding: 10px" class="header__grid--infor-user-notfound">
+            <h1 class="header__infor-username-notfound">Không tìm thấy kết quả...</h1>
+        </div>
+    }
+}
+else
+{
+
+}

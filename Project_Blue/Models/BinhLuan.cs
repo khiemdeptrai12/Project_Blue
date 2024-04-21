@@ -9,9 +9,9 @@ public partial class BinhLuan
 
     public int MaBaiPost { get; set; }
 
-    public string TenNguoiCmt { get; set; } = null!;
-
-    public string AnhNguoiCmt { get; set; } = null!;
+    public int IdUserCmt { get; set; }
 
     public string NoiDungCmt { get; set; } = null!;
+
+    public virtual ThongTinCaNhan IdUserCmtNavigation { get; set; } = null!;
 }

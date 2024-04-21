@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model List<Project_Blue.Models.GroupMember>
+@if (Model != null)
+    @foreach (var gr in Model)
+    {
+        if (gr.UserId == ViewBag.IdUser)
+        {
+            <a class="show_gr_home displayGrBox" data-grid="@gr.GroupId">
+                <li class="flex-center">
+                    <img class="right-items-icon"
+                             src="@gr.Group.GroupImage"
+                             alt="Gr_imgae" />
+                    <div class="grid__right-items-username">
+                        <div class="right-items-username">@gr.Group.GroupName</div>
+                    </div>
+                </li>
+            </a>
+        }
+    }
+else
+{
+
+}
+<script>
+    $(document).ready(function () {
+        $('.displayGrBox').click(function (event) {
+            event.preventDefault();
+            var GrId = $(this).data('grid');
+
+            $.ajax({
+                type: "GET",
+                url: '/Home/DisplayMessageGroup',
+                data: { grId: GrId },
+                success: function (response) {
+                    $('.show__container__footer-roomchat').html(response);
+                    var chatContainerGr = $('.container__footer-roomchat-content');
+                    chatContainerGr.scrollTop(chatContainerGr.prop("scrollHeight"));
+                },
+                error: function (xhr, status, error) {
+                    alert('Error: ' + error);
+                }
+            });
+        });
+    });
+</script>

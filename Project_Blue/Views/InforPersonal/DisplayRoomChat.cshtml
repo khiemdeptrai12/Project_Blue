@@ -1,0 +1,173 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model Project_Blue.Models.PostACmt
+@foreach(var item in Model.roomChats)
+{
+    @if (item.MaUser1 == ViewBag.Iduser && item.MaUser2 == ViewBag.MyId)
+    {
+        <div class="container__footer-roomchat active">
+            <div class="container__footer-roomchat-head">
+                    <img style="width: 36px; height: 36px; border-radius: 50%"
+                         src="@item.MaUser1Navigation.AnhDaiDien"
+                         alt="imgUser" />
+                    <div class="grid__footer-roomchat-username">
+                        <div class="footer-roomchat-username">@item.MaUser1Navigation.TenKhachHang</div>
+                        <div class="footer-roomchat-status">
+                            <span class="footer-items-message--status"></span>
+                            Đang online
+                        </div>
+                    </div>
+                    <i style="display: flex; align-items: center; font-size: 22px"
+                       class="fa-solid fa-xmark close__roomchat"></i>
+                </div>
+                <div class="container__footer-roomchat-body">
+                @*--------------Đoạn chat-----------*@
+                <div class="container__footer-roomchat-content">
+                    @foreach (var mes in Model.messages)
+                    {
+                                @if (item.MaPhong == mes.IdRoomchat)
+                                {
+                                    @if (mes.IdUser == item.MaUser2 && mes.NoiDung != null)
+                                    {
+                                        <div class="footer-roomchat-mycontent">
+                                            <span class="footer-roomchat-mycontent-text">
+                                                @mes.NoiDung
+                                            </span>
+                                        </div>
+                                    }
+                                    else if (mes.IdUser == item.MaUser1 && mes.NoiDung != null)
+                                    {
+                                        <div class="footer-roomchat-yourcontent">
+                                            <span class="footer-roomchat-yourcontent-text">
+                                                @mes.NoiDung
+                                            </span>
+                                        </div>
+                                    }
+                                }
+                    }
+                </div>
+                @*--------------Đoạn chat-----------*@
+                    <form asp-action="Message" class="container__footer-roomchat-send">
+                        <input asp-for="@Model.Message.IdRoomchat" type="hidden" value="@item.MaPhong" />
+                        <input asp-for="@Model.Message.IdUser" type="hidden" value="@item.MaUser2"/>
+                        <input asp-for="@Model.Message.NoiDung"
+                               class="footer-roomchat-send-input"
+                               type="text"
+                               placeholder="Aa" />
+                    <button class="footer-roomchat-send-submit" type="submit">
+                            Send
+                        </button>
+                    </form>
+            </div>
+        </div>
+        break;
+    }
+    else if (item.MaUser2 == ViewBag.Iduser && item.MaUser1 == ViewBag.MyId)
+    {
+        <div class="container__footer-roomchat active">
+            <div class="container__footer-roomchat-head">
+                <img style="width: 36px; height: 36px; border-radius: 50%"
+                     src="@item.MaUser2Navigation.AnhDaiDien"
+                     alt="imgUser" />
+                <div class="grid__footer-roomchat-username">
+                    <div class="footer-roomchat-username">@item.MaUser2Navigation.TenKhachHang</div>
+                    <div class="footer-roomchat-status">
+                        <span class="footer-items-message--status"></span>
+                        Đang online
+                    </div>
+                </div>
+                <i style="display: flex; align-items: center; font-size: 22px"
+                   class="fa-solid fa-xmark close__roomchat"></i>
+            </div>
+            <div class="container__footer-roomchat-body">
+                @*--------------Đoạn chat-----------*@
+                            <div class="container__footer-roomchat-content">
+                @foreach(var mes in Model.messages)
+                {
+                            if (item.MaPhong == mes.IdRoomchat )
+                            {
+                                @if (mes.IdUser == item.MaUser1 && mes.NoiDung != null)
+                                {
+                                        <div class="footer-roomchat-mycontent">
+                                            <span class="footer-roomchat-mycontent-text">
+                                                @mes.NoiDung
+                                            </span>
+                                        </div>
+                                } else if(mes.IdUser == item.MaUser2 && mes.NoiDung != null){
+                                        <div class="footer-roomchat-yourcontent">
+                                            <span class="footer-roomchat-yourcontent-text">
+                                                @mes.NoiDung
+                                            </span>
+                                        </div>
+                                }
+                            }
+                }
+                            </div>
+                @*--------------Đoạn chat-----------*@
+
+                <form asp-action="Message" class="container__footer-roomchat-send">
+                    <input asp-for="@Model.Message.IdRoomchat" type="hidden" value="@item.MaPhong" />
+                    <input asp-for="@Model.Message.IdUser" type="hidden" value="@item.MaUser1"/>
+                    <input asp-for="@Model.Message.NoiDung"
+                           class="footer-roomchat-send-input"
+                           type="text"
+                           placeholder="Aa" />
+                    <button class="footer-roomchat-send-submit" type="submit">
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+        break;
+    }
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script>
+    document.querySelector('.close__roomchat').onclick = function (e) {
+        document.querySelector('.container__footer-roomchat').classList.remove('active');
+    }
+    var isProcessing = false;
+
+    $(document).on('submit', '.container__footer-roomchat-send', function (e) {
+        e.preventDefault(); 
+        if (!isProcessing) {
+            isProcessing = true;
+            var formMessage = $(this).serialize();
+            $.ajax({
+                url: '/InforPersonal/Message',
+                type: 'POST',
+                data: formMessage,
+                success: function (data) {
+                    LoadMessage()
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                },
+                complete: function () {
+                    isProcessing = false; 
+                }
+            });
+        }
+    });
+
+    function LoadMessage() {
+        $.ajax({
+            url: '/InforPersonal/LoadMessage',
+            type: 'GET',
+            success: function (response) {
+                $('.container__footer-roomchat-content').html(response);
+                var chatContainer = $('.container__footer-roomchat-content');
+                chatContainer.scrollTop(chatContainer.prop("scrollHeight"));
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>

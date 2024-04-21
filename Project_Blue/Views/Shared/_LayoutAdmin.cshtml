@@ -1,0 +1,188 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue</title>
+    <link rel="stylesheet" href="/css/Admin.css" type="text/css" runat="server" />
+    <link rel="stylesheet" href="/fontawesome-free-6.5.2-web/css/all.css" />
+</head>
+<body>
+    <header>
+        <div class="header">
+            <ul class="header__list">
+                <li class="header__list-items">
+                    <a href="#" class="header__bg-logo">
+                        <div class="header__text-logo">Blue</div>
+                    </a>
+                </li>
+                <li class="header__list-items">
+                    <div class="header__user-name-img">
+                        <div class="header__user-name">@ViewBag.Admin</div>
+                        <img src="@ViewBag.AnhDaiDien"
+                             alt="User_img"
+                             class="header__user-img" />
+                        <ul class="show__menu-header-user">
+                            <li class="show__menu-header-items">
+                                <a asp-controller="Admin" asp-action="Logout" class="menu-header-item-btn">
+                                    <img class="menu-header-item-img"
+                                         src="@ViewBag.AnhDaiDien"
+                                         alt="imgAdmin" />
+                                    <span class="menu-header-item-text">Đăng xuất</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    @RenderBody()
+    <footer>
+        <div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        var show_menu = document.querySelector('.show__menu-header-user');
+        var img_user = document.querySelector('.header__user-img');
+        img_user.onclick = function (e) {
+            show_menu.classList.toggle('active');
+        }
+        $(document).on('click', '.nav__manageAdmin', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/Admin/navAdmin',
+                type: 'GET',
+                success: function (data) {
+                    $('.content__admin').html(data)
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        $(document).on('click', '.nav__managePost', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/Admin/navPost',
+                type: 'GET',
+                success: function (data) {
+                    $('.content__admin').html(data)
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        $(document).on('click', '.nav__manageUser', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/Admin/navUser',
+                type: 'GET',
+                success: function (data) {
+                    $('.content__admin').html(data)
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+        //-----------------------------------------
+        $(document).on('submit', '#formDeleteAdmin', function (e) {
+            e.preventDefault();
+            var formDeleteAdmin = $(this).serialize();
+            $.ajax({
+                url: '/Admin/DeleteAdmin',
+                type: 'POST',
+                data: formDeleteAdmin,
+                success: function (data) {
+                    LoadAdmin()
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        function LoadAdmin() {
+            $.ajax({
+                url: '/Admin/navAdmin',
+                type: 'GET',
+                success: function (response) {
+                    $('.content__admin').html(response)
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+        //-----------------------------------------
+        $(document).on('submit', '#formDeletePost', function (e) {
+            e.preventDefault();
+
+            var formDeletePost = $(this).serialize();
+            $.ajax({
+                url: '/Admin/DeletePost',
+                type: 'POST',
+                data: formDeletePost,
+                success: function (data) {
+                    LoadPost()
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        function LoadPost() {
+            $.ajax({
+                url: '/Admin/navPost',
+                type: 'GET',
+                success: function (response) {
+                    $('.content__admin').html(response)
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+        //------------------------------------------
+        $(document).on('submit', '#formDeleteUser', function (e) {
+
+            e.preventDefault();
+
+            var formDeleteUser = $(this).serialize();
+            $.ajax({
+                url: '/Admin/DeleteUser',
+                type: 'POST',
+                data: formDeleteUser,
+                success: function (data) {
+                    LoadUser()
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        function LoadUser() {
+            $.ajax({
+                url: '/Admin/navUser',
+                type: 'GET',
+                success: function (response) {
+                    $('.content__admin').html(response)
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

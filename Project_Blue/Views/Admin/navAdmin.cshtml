@@ -1,0 +1,87 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+@model Project_Blue.Models.PostACmt
+
+<table class="content__admin-tb-user">
+    <thead>
+        <tr class="admin__tb-user-tr-head">
+            <th class="admin__tb-user-head">Delete Admin</th>
+            <th class="admin__tb-user-head">Id Admin</th>
+            <th class="admin__tb-user-head">UserName</th>
+            <th class="admin__tb-user-head">Password</th>
+            <th class="admin__tb-user-head">Họ tên</th>
+            <th class="admin__tb-user-head">Email</th>
+            <th class="admin__tb-user-head">Số điện thoại</th>
+            <th class="admin__tb-user-head">Image</th>
+            <th class="admin__tb-user-head">Gender</th>
+            <th class="admin__tb-user-head">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var admin in Model.Admins)
+        {
+            <tr class="admin__tb-user-tr-body">
+                <td class="admin__tb-user-body">
+                    <form id="formDeleteAdmin" method="post">
+                        <input name="id" type="hidden" value="@admin.Idadmin" />
+                        <button class="btn__delete_admin" type="submit">Delete</button>
+                    </form>
+                </td>
+                <td class="admin__tb-user-body">@admin.Idadmin</td>
+                <td class="admin__tb-user-body">@admin.Username</td>
+                <td class="admin__tb-user-body">@admin.Password</td>
+                <td class="admin__tb-user-body">@admin.Name</td>
+                <td class="admin__tb-user-body">@admin.Gmail</td>
+                <td class="admin__tb-user-body">@admin.Sdt</td>
+                @if (admin.Image != null)
+                {
+                    <td class="admin__tb-user-body">
+                        <img style="width:50px;height:50px" src="@admin.Image" alt="Alternate Text" />
+                    </td>
+                }
+                else
+                {
+                    <td class="admin__tb-user-body">No Image</td>
+                }
+                @if (admin.Gender != null)
+                {
+                    <td class="admin__tb-user-body">@admin.GenderNavigation.GioiTinh1</td>
+                }
+                else
+                {
+                    <td class="admin__tb-user-body">chưa có thông tin</td>
+                }
+                @if (admin.Date != null)
+                {
+                    <td class="admin__tb-user-body">@admin.Date</td>
+                }
+                else
+                {
+                    <td class="admin__tb-user-body">chưa có thông tin</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<form asp-action="Register" class="form__register_admin">
+    <div class="form__register_admin-title">Đăng Ký Admin</div>
+    <input asp-for="@Model.Admin.Gmail"
+           class="inp__register_admin"
+           type="gmail"
+           placeholder="email" />
+
+    <input asp-for="@Model.Admin.Username"
+           class="inp__register_admin"
+           type="text"
+           placeholder="username" />
+    <input asp-for="@Model.Admin.Password"
+           class="inp__register_admin"
+           type="password"
+           placeholder="password" />
+    <button type="submit" class="btn__register_admin">Đăng ký</button>
+</form>

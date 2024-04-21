@@ -1,0 +1,1608 @@
+﻿@using Project_Blue.Models
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutInforPersonal";
+}
+@model Project_Blue.Models.PostACmt
+
+<div class="container__blue">
+    <div class="container__left">
+        <ul class="container__left-sidebar">
+            <li class="container__sidebar-items">
+                <a asp-controller="Home" asp-action="Home" asp-route-id="@ViewBag.IdinforUser" asp-route-checkLogin="1"
+                   class="sidebar-items-text">
+                    <img class="sidebar-items-icon"
+                         src="/imagesPost/Home.png"
+                         alt="Home" />
+                    <span class="sidebar-items-text">Trang Chủ</span>
+                </a>
+            </li>
+            <li class="container__sidebar-items">
+                <a asp-action="Index" asp-route-id="@ViewBag.IdinforUser" asp-route-checkLogin="1"
+                   asp-route-idUser="@ViewBag.IdinforUser" class="sidebar-items-text">
+                    <img class="sidebar-items-icon"
+                         src="/imagesPost/User.png"
+                         alt="Home" />
+                    <span class="sidebar-items-text">Trang cá nhân</span>
+                </a>
+            </li>
+            <li class="container__sidebar-items">
+                <a asp-controller="InforPersonal" asp-action="updateInfor" asp-route-checkLogin="1"
+                   asp-route-idUser="@ViewBag.IdinforUser" class="sidebar-items-text">
+                    <img class="sidebar-items-icon"
+                         src="/imagesPost/Savepost.png"
+                         alt="Home" />
+                    <span class="sidebar-items-text">Chỉnh sửa thông tin</span>
+                </a>
+            </li>
+            <li class="container__sidebar-items">
+                <a asp-controller="Home" asp-action="DisPlaySavePost" class="sidebar-items-text">
+                    <img class="sidebar-items-icon"
+                         src="/imagesUser/SavePostImg.png"
+                         alt="Home" />
+                    <span class="sidebar-items-text">Bài đăng đã lưu</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="container__left-message">
+            <a href="#" class="grid__left-message">
+                <span class="container__left-message--text"> Thông báo </span>
+                <i class="fa-solid fa-chevron-down container__left-message--icon"></i>
+            </a>
+            @foreach(var user in Model.thongTinCaNhans)
+            {
+            @foreach(var banBe in Model.BanBes)
+            {
+                @if(banBe.IdUser2 == @ViewBag.IdinforUser && banBe.IdUser1 == user.MaKhachHang && banBe.TrangThai==2){
+                    <li class="container__left-message-items active">
+                            <img style="width: 40px; height: 40px; border-radius: 50%"
+                                 src="@user.AnhDaiDien"
+                                 alt="" />
+                            <div class="grid__left-message-items-username">
+                                <div class="left-message-items-username">
+                                    @user.TenKhachHang đã gửi cho bạn lời mời kết bạn
+                                </div>
+                                <div class="grid__form-left-message-submit">
+                                    <form asp-action="Accept">
+                                        <input type="hidden" asp-for="@Model.BanBe.IdUser1" value="@banBe.IdUser1" />
+                                        <input type="hidden" asp-for="@Model.BanBe.IdUser2" value="@banBe.IdUser2" />
+                                        <button class="form-left-message-submit" type="submit">
+                                            Chấp nhận
+                                        </button>
+                                    </form>
+                                    <form asp-action="Refuse">
+                                        <input type="hidden" asp-for="@Model.BanBe.IdUser1" value="@banBe.IdUser1" />
+                                        <input type="hidden" asp-for="@Model.BanBe.IdUser2" value="@banBe.IdUser2" />
+                                        <button class="form-left-message-submit" type="submit">
+                                            Từ chối
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                    </li>
+                }
+            }
+            }
+        </ul>
+    </div>
+        <div class="container__center">
+    @foreach(var item in Model.thongTinCaNhans)
+    {
+        if(item.MaKhachHang == ViewBag.IdUser)
+        {
+        <div class="container__center-user-IP">
+            <div class="grid__imgUser--IP">
+                <img class="center-userimg-IP"
+                     src="@item.AnhDaiDien"
+                     alt="imgUser" />
+            </div>
+            <h1 class="center-username-IP">@item.TenKhachHang</h1>
+            @if(item.TieuSu != null ){
+                <h4 class="center-userdecriptions-IP">@item.TieuSu</h4>
+            }
+            <ul class="center-userdetails-IP">
+                <li class="center-userdetails-items-IP">
+                    <i class="fa-solid fa-phone"></i>
+                    @if(item.Sdt != null){
+                        <span class="userdetails-items-text-IP">@item.Sdt</span>
+                    } else {
+                        <span style="opacity:0.4" class="userdetails-items-text-IP">Không có số điện thoại để hiển thị</span>
+                    }
+                </li>
+                <li class="center-userdetails-items-IP">
+                    <i style="font-size:13px" class="fa-solid fa-venus-mars"></i>
+                    @if(item.GioiTinh != null){
+                        <span class="userdetails-items-text-IP">@item.GioiTinhNavigation?.GioiTinh1</span>
+                    } else {
+                        <span style="opacity:0.4" class="userdetails-items-text-IP">Không có giới tính để hiển thị</span>
+                    }
+                </li>
+                <li class="center-userdetails-items-IP">
+                    <i class="fa-solid fa-heart"></i>
+                    @if(item.TrangThai != null){
+                        <span class="userdetails-items-text-IP">@item.TrangThaiNavigation?.TrangThai1</span>
+                    } else {
+                        <span style="opacity:0.4" class="userdetails-items-text-IP">Không có giới tính để hiển thị</span>
+                    }
+                </li>
+                <li class="center-userdetails-items-IP">
+                    <i style="font-size:18px" class="fa-regular fa-calendar-days"></i>
+                    @if(item.NgaySinh != null){
+                        <span class="userdetails-items-text-IP">@item.NgaySinh</span>
+                    } else {
+                        <span style="opacity:0.4" class="userdetails-items-text-IP">Không có ngày sinh để hiển thị</span>
+                    }
+                </li>
+                <li class="center-userdetails-items-IP">
+                    <i class="fa-regular fa-envelope"></i>
+                    @if(item.Sdt != null){
+                        <span class="userdetails-items-text-IP">@item.Gmail</span>
+                    } else {
+                        <span style="opacity:0.4" class="userdetails-items-text-IP">Không có email để hiển thị</span>
+                    }
+                </li>
+            </ul>
+            @if(ViewBag.IdinforUser==@item.MaKhachHang){
+            <div class="center-useraddfriend-IP">
+
+            </div>
+            } else 
+            {
+                int checkStatus = 0;
+                @foreach (var check in Model.BanBes){
+                            @if (check.IdUser1 == ViewBag.IdinforUser && check.IdUser2 == @item.MaKhachHang)
+                            {
+                                if (check.TrangThai == 2)
+                                {
+                                    checkStatus = 1;
+                                    <div class="center-useraddfriend-IP">
+                                        <form class="center-form__unaddfriend-IP" action="">
+                                            <input type="hidden" value="" />
+                                            <input type="hidden" value="" />
+                                            <button class="center-useraddfriend-submit-IP" type="submit">
+                                                <i
+                                                style="margin-right: 10px"
+                                                class="fa-solid fa-user-check"
+                                                ></i>
+                                                Đã gửi lời mời kết bạn
+                                            </button>
+                                        </form>
+                                    </div>
+                                }
+                                else
+                                {
+                                    checkStatus = 1;
+                                    <div class="center-useraddfriend-IP">
+                                        <form class="center-form__madeFriend-IP" action="">
+                                            <input type="hidden" value="" />
+                                            <input type="hidden" value="" />
+                                            <button class="center-useraddfriend-submit-IP" type="submit">
+                                                <i style="margin-right: 10px" class="fa-solid fa-user"></i>
+                                                Bạn bè
+                                            </button>
+                                        </form>
+                                    </div>
+                                }
+                            }
+                            else if (check.IdUser2 == @ViewBag.IdinforUser && check.IdUser1 == @item.MaKhachHang 
+                            && check.TrangThai==1)
+                            {
+                                checkStatus = 1;
+                                <div class="center-useraddfriend-IP">
+                                    <form class="center-form__unaddfriend-IP" action="">
+                                        <input type="hidden" value="" />
+                                        <input type="hidden" value="" />
+                                        <button class="center-useraddfriend-submit-IP" type="submit">
+                                            <i style="margin-right: 10px"
+                                               class="fa-solid fa-user"></i>
+                                            Bạn bè
+                                        </button>
+                                    </form>
+                                </div>
+                            }
+                            else if (check.IdUser2 == @ViewBag.IdinforUser && check.IdUser1 == @item.MaKhachHang
+                            && check.TrangThai == 2)
+                            {
+                                checkStatus = 1;
+                                <div class="center-useraddfriend-IP">
+                                    <form class="center-form__unaddfriend-IP" action="">
+                                        <input type="hidden" value="" />
+                                        <input type="hidden" value="" />
+                                        <button class="center-useraddfriend-submit-IP" type="submit">
+                                            <i style="margin-right: 10px"
+                                               class="fa-solid fa-user-check"></i>
+                                            Đang chờ xác nhận
+                                        </button>
+                                    </form>
+                                </div>
+                            }
+                        }
+                        if (checkStatus == 0)
+                        {
+                                <div class="center-useraddfriend-IP">
+                                    <form class="center-form__useraddfriend-IP" asp-action="AddFriend">
+                                        <input asp-for="@Model.BanBe.IdUser1" type="hidden" value="@ViewBag.IdinforUser" />
+                                        <input  asp-for="@Model.BanBe.IdUser2" type="hidden" value="@item.MaKhachHang" />
+                                        <button class="center-useraddfriend-submit-IP" type="submit">
+                                            <i style="margin-right: 10px" class="fa-solid fa-user-plus"></i>
+                                            Kết bạn
+                                        </button>
+                                    </form>
+                                </div>
+                        }
+            }
+        </div>
+    }
+    }
+        @if (ViewBag.IdinforUser == ViewBag.IdUser)
+        {
+            <div class="container__center-newpost-IP">
+                <h1>Bài viết mới +</h1>
+            </div>
+
+            <div class="container__center-user-IP">
+                <form asp-action="BaiPost" class="form__center-user-post" method="post" enctype="multipart/form-data">
+                    <input asp-for="@Model.BaiPost.MaNguoiPost"
+                           value="@ViewBag.IdinforUser"
+                           type="hidden"/>
+                    <div class="form__user-post">
+                        <input asp-for="@Model.BaiPost.Caption"
+                               class="form__user-post-input"
+                               type="text"
+                               placeholder="Caption" />
+                    </div>
+                    <div class="form__user-post">
+                        <input asp-for="@Model.BaiPost.MoTa"
+                               class="form__user-post-input"
+                               type="text"
+                               placeholder="Decriptions" />
+                    </div>
+                    <div class="form__user-post">
+                        <input name="anhBaiPost"
+                               asp-for="@Model.BaiPost.AnhBaiPost"
+                               class="form__user-post-img"
+                               type="file" />
+                    </div>
+                    <div class="form__user-post">
+                        <button type="submit" class="submit-post">Đăng</button>
+                    </div>
+                </form>
+            </div>
+            <div class="container__center-newpost-IP">
+                <h1>Bài đăng của tôi</h1>
+            </div>
+        }
+        else
+        {
+            <div class="container__center-newpost-IP">
+                <h1>Bài đăng của @ViewBag.TenUserSeach</h1>
+            </div>
+        }
+            @foreach(var items in Model.SAPList)
+            {
+            if (items.GetType() == typeof(BaiPost))
+            {
+            var post = (BaiPost)items;
+            int checkReact = 0;
+            int quantityReact = 0;
+            if(post.MaNguoiPost == ViewBag.IdUser)
+            {
+                if (post.MaNguoiPost == ViewBag.IdinforUser)
+                {
+
+                    <div class="container__center-others-post">
+                        @if (post.AnhBaiPost != null)
+                        {
+                            <div class="flex">
+                                <form asp-controller="Home" class="savePostForm" asp-action="SavePost">
+                                    <input type="hidden" asp-for="@Model.savePost.IdPost" value="@post.MaBaiPost" />
+                                    <input type="hidden" asp-for="@Model.savePost.IdUserSave" value="@ViewBag.IdinforUser" />
+                                    <input type="hidden" asp-for="@Model.savePost.LoaiPost" value="1" />
+                                    <button class="grid__icon-save-post" type="submit">
+                                        <i class="fa-solid fa-bookmark icon-save-post"></i>
+                                    </button>
+                                </form>
+                                <form asp-action="DeletePost" style="height:40px">
+                                    <input type="hidden" name="maBaiPost" value="@post.MaBaiPost" />
+                                    <input type="hidden" name="idUser" value="@ViewBag.IdinforUser" />
+                                    <button class="grid__icon-remove-post" type="submit" >
+                                        <i class="fa-solid fa-xmark icon-remove-post"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="grid__center-others-post">
+                                <img class="center__img-others-post"
+                                     src="@post.AnhBaiPost"
+                                     alt="others-post" />
+                                <div class="center__bg-name-post">
+                                    <img class="center__icon-others-post"
+                                         src="@post.MaNguoiPostNavigation.AnhDaiDien"
+                                         alt="User_img" />
+                                    <span class="center__name-others-post">@post.MaNguoiPostNavigation.TenKhachHang</span>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            @*
+                            <a asp-action="DeletePost" asp-route-maBaiPost="@items.MaBaiPost"
+                               asp-route-idUser="@ViewBag.IdinforUser" class="grid__icon-remove-post">
+                                <i class="fa-solid fa-xmark icon-remove-post"></i>
+                            </a>
+                            *@
+                            <div class="flex">
+                                <form asp-controller="Home" class="savePostForm" asp-action="SavePost">
+                                <input type="hidden" asp-for="@Model.savePost.IdPost" value="@post.MaBaiPost" />
+                                <input type="hidden" asp-for="@Model.savePost.IdUserSave" value="@ViewBag.IdinforUser" />
+                                <input type="hidden" asp-for="@Model.savePost.LoaiPost" value="1" />
+                                <button class="grid__icon-save-post" type="submit">
+                                    <i class="fa-solid fa-bookmark icon-save-post"></i>
+                                </button>
+                                </form>
+                                <form asp-action="DeletePost" style="height:40px">
+                                    <input type="hidden" name="maBaiPost" value="@post.MaBaiPost" />
+                                    <input type="hidden" name="idUser" value="@ViewBag.IdinforUser" />
+                                    <button class="grid__icon-remove-post" type="submit">
+                                        <i class="fa-solid fa-xmark icon-remove-post"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="grid__center-others-post__no-image">
+                                <div class="center__bg-name-post__no-image">
+                                    <img class="center__icon-others-post"
+                                         src="@post.MaNguoiPostNavigation.AnhDaiDien"
+                                         alt="User_img" />
+                                    <span class="center__name-others-post">@post.MaNguoiPostNavigation.TenKhachHang</span>
+                                </div>
+                            </div>
+                        }
+                        <div class="center__others-post-caption">@post.Caption</div>
+                        <div class="center__others-post-details">@post.MoTa</div>
+                        <div class="center__others-post-reaction">
+                            <div class="center__load-like-reaction" data-post-id="@post.MaBaiPost">
+                                @foreach (var react in Model.reactionPosts)
+                                {
+                                    if (react.IdPost == post.MaBaiPost)
+                                    {
+                                        quantityReact += 1;
+                                        if (react.IdUser == ViewBag.IdinforUser)
+                                        {
+                                            checkReact = 1;
+                                        }
+                                    }
+                                }
+                                @if (checkReact == 0)
+                                {
+                                    <form asp-action="ReactionPost" class="form__like_post">
+                                        <input asp-for="@Model.ReactionPost.IdUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                        <input asp-for="@Model.ReactionPost.IdPost" type="hidden" value="@post.MaBaiPost" />
+                                        <button data-post-id="@post.MaBaiPost" class="like__btn-post" type="submit">
+                                            <i class="fa-solid fa-heart others-post-react-icon like__icon-post"></i>
+                                            <span>@quantityReact</span>
+                                            <span class="others-post-react-text">Like</span>
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="ReactionPost" class="form__like_post">
+                                        <input asp-for="@Model.ReactionPost.IdUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                        <input asp-for="@Model.ReactionPost.IdPost" type="hidden" value="@post.MaBaiPost" />
+                                        <button data-post-id="@post.MaBaiPost" class="like__btn-post" type="submit">
+                                            <i class="fa-solid fa-heart others-post-react-icon like__icon-post active"></i>
+                                            <span>@quantityReact</span>
+                                            <span class="others-post-react-text">Like</span>
+                                        </button>
+                                    </form>
+                                }
+                            </div>
+                            <a href="#" class="grid__others-post-reaction comment_post">
+                                <i class="fa-regular fa-comment others-post-react-icon"></i>
+                                <span class="others-post-react-text">Comment</span>
+                            </a>
+                             <a asp-controller="InforPersonal" asp-action="DisplayShare" asp-route-idUser="@ViewBag.IdinforUser"
+                               asp-route-idPost="@post.MaBaiPost" class="grid__others-post-share">
+                                 <i class="fa-regular fa-share-from-square others-post-react-icon"></i>
+                                 <span class="others-post-react-text">Share</span>
+                             </a>
+                        </div>
+                        <ul class="center__others-post-cmt">
+                            @foreach (var binhluan in Model.BinhLuanList)
+                            {
+                                if (post.MaBaiPost == binhluan.MaBaiPost)
+                                {
+                                        <li class="others-post-cmt-items">
+                                            <img class="post-cmt-items-img"
+                                                 src="@binhluan.IdUserCmtNavigation.AnhDaiDien"
+                                                 alt="User_img" />
+                                            <div class="grid__cmt-items">
+                                                <div class="cmt-items-user-name">@binhluan.IdUserCmtNavigation.TenKhachHang</div>
+                                                <div class="cmt-items-user-cmt">@binhluan.NoiDungCmt</div>
+                                            </div>
+                                            @*
+                                            <a asp-action="DeleteCmt" asp-route-id="@ViewBag.IdUser" asp-route-idCmt="@binhluan.MaCmt"
+                                               asp-route-idUser="@ViewBag.IdinforUser">
+                                                <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                            </a>
+                                            *@
+                                            <form asp-action="DeleteCmt" class="form__icon-remove-cmt">
+                                                <input name="id" type="hidden" value="@ViewBag.IdUser" />
+                                                <input name="idCmt" type="hidden" value="@binhluan.MaCmt" />
+                                                <input name="idUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                                <button type="submit" style=" background-color: transparent;
+                                                        border: none; ">
+                                                    <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                                </button>
+                                            </form>
+                                        </li>
+                                }
+                            }
+                            <form asp-action="PostCmt" class="form__others-post-cmt-items">
+                                <img class="post-cmt-items-img"
+                                     src="@ViewBag.AnhDaiDien"
+                                     alt="User_img" />
+                                <div class="form__user-post">
+                                    <input asp-for="@Model.binhLuan.NoiDungCmt"
+                                           class="form__user-post-input"
+                                           type="text"
+                                           placeholder="Viết bình luận..." />
+                                    <input asp-for="@Model.binhLuan.MaBaiPost"
+                                           value="@post.MaBaiPost"
+                                           class="form__user-post-input"
+                                           type="hidden" />
+                                    <input value="@ViewBag.IdinforUser"
+                                           asp-for="@Model.binhLuan.IdUserCmt" 
+                                           type="hidden"
+                                            />
+                                    <button class="form__user-post-submit">Gửi</button>
+                                </div>
+                            </form>
+                        </ul>
+                    </div>
+                } 
+                else
+                {
+                    <div class="container__center-others-post">
+                    @if(post.AnhBaiPost != null)
+                     {
+                         <div class="grid__center-others-post">
+                                    <img class="center__img-others-post"
+                                         src="@post.AnhBaiPost"
+                                         alt="others-post" />
+                            <div class="center__bg-name-post">
+                                    <img class="center__icon-others-post"
+                                         src="@post.MaNguoiPostNavigation.AnhDaiDien"
+                                         alt="User_img" />
+                                <span class="center__name-others-post">@post.MaNguoiPostNavigation.TenKhachHang</span>
+                            </div>
+                         </div>
+                     }
+                     else
+                     {
+                                    <div class="grid__center-others-post__no-image">
+                                        <div class="center__bg-name-post__no-image">
+                                        <img class="center__icon-others-post"
+                                                 src="@post.MaNguoiPostNavigation.AnhDaiDien"
+                                                 alt="User_img" />
+                                    <span class="center__name-others-post">@post.MaNguoiPostNavigation.TenKhachHang</span>
+                                        </div>
+                                    </div>
+                     }
+                    <div class="center__others-post-caption">@post.Caption</div>
+                    <div class="center__others-post-details">@post.MoTa</div>
+                    <div class="center__others-post-reaction">
+                        <div class="center__load-like-reaction" data-post-id="@post.MaBaiPost">
+                                @foreach (var react in Model.reactionPosts)
+                                {
+                                    if (react.IdPost == post.MaBaiPost)
+                                    {
+                                        quantityReact += 1;
+                                        if (react.IdUser == ViewBag.IdinforUser)
+                                        {
+                                            checkReact = 1;
+                                        }
+                                    }
+                                }
+                                @if (checkReact == 0)
+                                {
+                                    <form asp-action="ReactionPost" class="form__like_post">
+                                        <input asp-for="@Model.ReactionPost.IdUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                        <input asp-for="@Model.ReactionPost.IdPost" type="hidden" value="@post.MaBaiPost" />
+                                        <button data-post-id="@post.MaBaiPost" class="like__btn-post" type="submit">
+                                            <i class="fa-solid fa-heart others-post-react-icon like__icon-post"></i>
+                                            <span>@quantityReact</span>
+                                            <span class="others-post-react-text">Like</span>
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="ReactionPost" class="form__like_post">
+                                            <input asp-for="@Model.ReactionPost.IdUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                            <input asp-for="@Model.ReactionPost.IdPost" type="hidden" value="@post.MaBaiPost" />
+                                        <button data-post-id="@post.MaBaiPost" class="like__btn-post" type="submit">
+                                            <i class="fa-solid fa-heart others-post-react-icon like__icon-post active"></i>
+                                            <span>@quantityReact</span>
+                                            <span class="others-post-react-text">Like</span>
+                                        </button>
+                                    </form>
+                                }
+                            </div>
+                        <a href="#" class="grid__others-post-reaction comment_post">
+                            <i class="fa-regular fa-comment others-post-react-icon"></i>
+                            <span class="others-post-react-text">Comment</span>
+                        </a>
+                        <a asp-controller="InforPersonal" asp-action="DisplayShare" asp-route-idUser="@ViewBag.IdinforUser"
+                           asp-route-idPost="@post.MaBaiPost" class="grid__others-post-share">
+                            <i class="fa-regular fa-share-from-square others-post-react-icon"></i>
+                            <span class="others-post-react-text">Share</span>
+                        </a>
+                    </div>
+                         <ul class="center__others-post-cmt">
+                    @foreach(var binhluan in Model.BinhLuanList){
+                        if(post.MaBaiPost == binhluan.MaBaiPost){
+                            if(post.MaNguoiPost == ViewBag.IdinforUser){
+                                <li class="others-post-cmt-items">
+                                    <img class="post-cmt-items-img"
+                                         src="@binhluan.IdUserCmtNavigation.AnhDaiDien"
+                                         alt="User_img" />
+                                    <div class="grid__cmt-items">
+                                        <div class="cmt-items-user-name">@binhluan.IdUserCmtNavigation.TenKhachHang</div>
+                                        <div class="cmt-items-user-cmt">@binhluan.NoiDungCmt</div>
+                                    </div>
+                                    @*
+                                    <a asp-action="DeleteCmt" asp-route-id="@ViewBag.idUser" 
+                                        asp-route-idCmt="@binhluan.MaCmt" asp-route-idUser="@ViewBag.IdinforUser">
+                                        <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                    </a>
+                                    *@
+                                            <form asp-action="DeleteCmt" class="form__icon-remove-cmt">
+                                                <input name="id" type="hidden" value="@ViewBag.IdUser" />
+                                                <input name="idCmt" type="hidden" value="@binhluan.MaCmt" />
+                                                <input name="idUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                                <button type="submit" style=" background-color: transparent;
+                                                        border: none; ">
+                                                    <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                                </button>
+                                            </form>
+                                </li>
+                            } else {
+                                if(binhluan.IdUserCmt == ViewBag.IdinforUser){
+                                    <li class="others-post-cmt-items">
+                                        <img class="post-cmt-items-img"
+                                             src="@binhluan.IdUserCmtNavigation.AnhDaiDien"
+                                             alt="User_img" />
+                                        <div class="grid__cmt-items">
+                                            <div class="cmt-items-user-name">@binhluan.IdUserCmtNavigation.TenKhachHang</div>
+                                            <div class="cmt-items-user-cmt">@binhluan.NoiDungCmt</div>
+                                        </div>
+                                        @*
+                                        <a asp-action="DeleteCmt" asp-route-id="@ViewBag.idUser" 
+                                            asp-route-idCmt="@binhluan.MaCmt" asp-route-idUser="@ViewBag.IdinforUser">
+                                            <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                        </a>
+                                        *@
+                                            <form asp-action="DeleteCmt" class="form__icon-remove-cmt">
+                                                <input name="id" type="hidden" value="@ViewBag.IdUser" />
+                                                <input name="idCmt" type="hidden" value="@binhluan.MaCmt" />
+                                                <input name="idUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                                <button type="submit" style=" background-color: transparent;
+                                                        border: none; ">
+                                                    <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                                </button>
+                                            </form>
+                                    </li>
+                                }else {
+                                    <li class="others-post-cmt-items">
+                                        <img class="post-cmt-items-img"
+                                             src="@binhluan.IdUserCmtNavigation.AnhDaiDien"
+                                             alt="User_img" />
+                                        <div class="grid__cmt-items">
+                                            <div class="cmt-items-user-name">@binhluan.IdUserCmtNavigation.TenKhachHang</div>
+                                            <div class="cmt-items-user-cmt">@binhluan.NoiDungCmt</div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        }
+                    }
+                            <form class="form__others-post-cmt-items">
+                                <img class="post-cmt-items-img"
+                                     src="@ViewBag.AnhDaiDien"
+                                     alt="User_img" />
+                                <div class="form__user-post">
+                                    <input asp-for="@Model.binhLuan.NoiDungCmt"
+                                           class="form__user-post-input"
+                                           type="text"
+                                           placeholder="Viết bình luận..." />
+
+                                    <input asp-for="@Model.binhLuan.MaBaiPost"
+                                           value="@post.MaBaiPost"
+                                           class="form__user-post-input"
+                                           type="hidden" />
+                                    <input value="@ViewBag.IdinforUser"
+                                           asp-for="@Model.binhLuan.IdUserCmt"
+                                           type="hidden" >
+                                    <button class="form__user-post-submit">Gửi</button>
+                                </div>
+                            </form>
+                         </ul>
+                        </div>
+
+                    }
+
+                }
+            } else if (items.GetType() == typeof(SharePost))
+            {
+            var share = (SharePost)items;
+            int checkReactShare = 0;
+            int quantityReactShare = 0;
+            if(share.IdUserShare == ViewBag.IdUser)
+            {
+                if (share.IdUserShare == ViewBag.IdinforUser)
+                {
+
+                    <div class="container__center-others-post">
+                        @if (share.IdBaiPostNavigation.AnhBaiPost != null)
+                        {
+                            @*
+                                <a asp-action="DeletePost" asp-route-maBaiPost="@items.MaBaiPost"
+                               asp-route-idUser="@ViewBag.IdinforUser" class="grid__icon-remove-post">
+                                <i class="fa-solid fa-xmark icon-remove-post"></i>
+                                </a>
+                            *@
+                            <div class="flex">
+                                <form asp-controller="Home" class="savePostForm" asp-action="SavePost" >
+                                    <input type="hidden" asp-for="@Model.savePost.IdPost"  value="@share.IdPostShare" />
+                                    <input type="hidden" asp-for="@Model.savePost.IdUserSave"  value="@ViewBag.IdinforUser" />
+                                    <input type="hidden" asp-for="@Model.savePost.LoaiPost"  value = "2" />
+                                    <button class="grid__icon-save-share" type="submit" >
+                                            <i class="fa-solid fa-bookmark icon-save-share"></i>
+                                    </button>
+                                </form>
+                                <form asp-action="DeleteShare" style="height:40px">
+                                        <input type="hidden" name="maBaiShare" value="@share.IdPostShare" />
+                                    <input type="hidden" name="idUser" value="@ViewBag.IdinforUser" />
+                                    <button class="grid__icon-remove-share" type="submit" >
+                                        <i class="fa-solid fa-xmark icon-remove-share"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="grid__share">
+                                <img src="@share.IdUserShareNavigation.AnhDaiDien" alt="imguser" class="share__user-img" />
+                                <span class="share__user-name">
+                                @share.IdUserShareNavigation.TenKhachHang
+                                <span style="opacity:0.4;font-size:16px">đã chia sẻ bài viết</span>
+                                </span>
+                            </div>
+                            <div class="center-my-sharepost">@share.NoiDungShare</div>
+                            <hr/>
+                            <div class="grid__center-others-post">
+                                <img class="center__img-others-post"
+                                     src="@share.IdBaiPostNavigation.AnhBaiPost"
+                                     alt="others-post" />
+                                <div class="center__bg-name-post">
+                                    <img class="center__icon-others-post"
+                                         src="@share.IdUserShareNavigation.AnhDaiDien"
+                                         alt="User_img" />
+                                    <span class="center__name-others-post">@share.IdUserShareNavigation.TenKhachHang</span>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            @*
+                            <a asp-action="DeletePost" asp-route-maBaiPost="@items.MaBaiPost"
+                               asp-route-idUser="@ViewBag.IdinforUser" class="grid__icon-remove-post">
+                                <i class="fa-solid fa-xmark icon-remove-post"></i>
+                            </a>
+                            *@
+                            <div class="flex">
+                                <form asp-controller="Home" class="savePostForm" asp-action="SavePost" >
+                                    <input type="hidden" asp-for="@Model.savePost.IdPost"  value="@share.IdPostShare" />
+                                    <input type="hidden" asp-for="@Model.savePost.IdUserSave"  value="@ViewBag.IdinforUser" />
+                                    <input type="hidden" asp-for="@Model.savePost.LoaiPost"  value = "2" />
+                                    <button class="grid__icon-save-share" type="submit" >
+                                            <i class="fa-solid fa-bookmark icon-save-share"></i>
+                                    </button>
+                                </form>
+                                <form asp-action="DeleteShare" style="height:40px">
+                                    <input type="hidden" name="maBaiShare" value="@share.IdPostShare" />
+                                    <input type="hidden" name="idUser" value="@ViewBag.IdinforUser" />
+                                    <button class="grid__icon-remove-share" type="submit">
+                                        <i class="fa-solid fa-xmark icon-remove-share"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="grid__share">
+                                <img src="@share.IdUserShareNavigation.AnhDaiDien" alt="imguser" class="share__user-img" />
+                                <span class="share__user-name">
+                                    @share.IdUserShareNavigation.TenKhachHang
+                                    <span style="opacity:0.4;font-size:16px">đã chia sẻ bài viết</span>
+                                </span>
+                            </div>
+                            <div class="center-my-sharepost">@share.NoiDungShare</div>
+                            <hr style="margin-bottom:10px" />
+                            <div class="grid__center-others-post__no-image">
+                                <div class="center__bg-name-post__no-image">
+                                    <img class="center__icon-others-post"
+                                         src="@share.IdUserShareNavigation.AnhDaiDien"
+                                         alt="User_img" />
+                                    <span class="center__name-others-post">@share.IdUserShareNavigation.TenKhachHang</span>
+                                </div>
+                            </div>
+                        }
+                        <div class="center__others-post-caption">@share.IdBaiPostNavigation.Caption</div>
+                        <div class="center__others-post-details">@share.IdBaiPostNavigation.MoTa</div>
+                        <div class="center__others-post-reaction">
+                            <div class="center__load-like-reaction" data-share-id="@share.IdPostShare">
+                                @foreach (var react in Model.reactionSharesPosts)
+                                {
+                                    if (react.IdPostShare == share.IdPostShare)
+                                    {
+                                        quantityReactShare += 1;
+                                            if (react.IdUser == ViewBag.IdinforUser)
+                                        {
+                                            checkReactShare = 1;
+                                        }
+                                    }
+                                }
+                                @if (checkReactShare == 0)
+                                {
+                                    <form asp-action="ReactionPostShared" class="form__like_postshare">
+                                        <input asp-for="@Model.ReactionSharePost.IdUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                        <input asp-for="@Model.ReactionSharePost.IdPostShare" type="hidden" value="@share.IdPostShare" />
+                                        <button data-share-id="@share.IdPostShare" class="like__btn-share" type="submit">
+                                            <i class="fa-solid fa-heart others-post-react-icon like__icon-share"></i>
+                                            <span>@quantityReactShare</span>
+                                            <span class="others-post-react-text">Like</span>
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="ReactionPostShared" class="form__like_postshare">
+                                        <input asp-for="@Model.ReactionSharePost.IdUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                        <input asp-for="@Model.ReactionSharePost.IdPostShare" type="hidden" value="@share.IdPostShare" />
+                                        <button data-share-id="@share.IdPostShare" class="like__btn-share" type="submit">
+                                            <i class="fa-solid fa-heart others-post-react-icon like__icon-share active"></i>
+                                            <span>@quantityReactShare</span>
+                                            <span class="others-post-react-text">Like</span>
+                                        </button>
+                                    </form>
+                                }
+                            </div>
+                            <a href="#" class="grid__others-post-reaction comment_post">
+                                <i class="fa-regular fa-comment others-post-react-icon"></i>
+                                <span class="others-post-react-text">Comment</span>
+                            </a>
+                        </div>
+                        <ul class="center__others-post-cmt">
+                            @foreach (var binhluan in Model.BinhLuanShares)
+                            {
+                                if (share.IdPostShare == binhluan.MaShare)
+                                {
+                                        <li class="others-post-cmt-items">
+                                            <img class="post-cmt-items-img"
+                                                 src="@binhluan.IdUserCmtShareNavigation.AnhDaiDien"
+                                                 alt="User_img" />
+                                            <div class="grid__cmt-items">
+                                                <div class="cmt-items-user-name">@binhluan.IdUserCmtShareNavigation.TenKhachHang</div>
+                                                <div class="cmt-items-user-cmt">@binhluan.NoiDungCmtShare</div>
+                                            </div>
+                                            @*
+                                            <a asp-action="DeleteCmt" asp-route-id="@ViewBag.IdUser" asp-route-idCmt="@binhluan.MaCmt"
+                                               asp-route-idUser="@ViewBag.IdinforUser">
+                                                <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                            </a>
+                                            *@
+                                            <form asp-action="DeleteCmtShared" class="form__icon-remove-cmtshare">
+                                                <input name="id" type="hidden" value="@ViewBag.IdUser" />
+                                                <input name="idCmt" type="hidden" value="@binhluan.MaCmtShare" />
+                                                <input name="idUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                                <button type="submit" style=" background-color: transparent;
+                                                        border: none; ">
+                                                    <i class="fa-solid fa-xmark icon-remove-cmtshare"></i>
+                                                </button>
+                                            </form>
+                                        </li>
+                                }
+                            }
+                            <form asp-action="PostCmtShared" class="form__others-post-cmt-share">
+                                <img class="post-cmt-items-img"
+                                     src="@ViewBag.AnhDaiDien"
+                                     alt="User_img" />
+                                <div class="form__user-post">
+                                    <input asp-for="@Model.BinhLuanShare.NoiDungCmtShare"
+                                           class="form__user-post-input"
+                                           type="text"
+                                           placeholder="Viết bình luận..." />
+                                    <input asp-for="@Model.BinhLuanShare.MaShare"
+                                           value="@share.IdPostShare"
+                                           class="form__user-post-input"
+                                           type="hidden" />
+                                    <input value="@ViewBag.IdinforUser"
+                                           asp-for="@Model.BinhLuanShare.IdUserCmtShare" 
+                                           type="hidden"
+                                            />
+                                    <button class="form__user-post-submit">Gửi</button>
+                                </div>
+                            </form>
+                        </ul>
+                    </div>
+                } 
+                else
+                {
+                    <div class="container__center-others-post">
+                    @if(share.IdBaiPostNavigation.AnhBaiPost != null)
+                     {
+                         <div style="height:40px"></div>
+                         <div class="grid__share">
+                                <img src="@share.IdUserShareNavigation.AnhDaiDien" alt="imguser" class="share__user-img" />
+                                    <span  class="share__user-name">
+                                    @share.IdUserShareNavigation.TenKhachHang 
+                                    <span style="opacity:0.4;font-size:16px">đã chia sẻ bài viết</span>
+                                </span>
+                            </div>
+                            <div class="center-my-sharepost" >@share.NoiDungShare</div>
+                                <hr />
+                         <div class="grid__center-others-post">
+                                    <img class="center__img-others-post"
+                                         src="@share.IdBaiPostNavigation.AnhBaiPost"
+                                         alt="others-post" />
+                            <div class="center__bg-name-post">
+                                    <img class="center__icon-others-post"
+                                         src="@share.IdUserShareNavigation.AnhDaiDien"
+                                         alt="User_img" />
+                                <span class="center__name-others-post">@share.IdUserShareNavigation.TenKhachHang</span>
+                            </div>
+                         </div>
+                     }
+                     else
+                            {
+                                <div style="height:40px"></div>
+                                <div class="grid__share">
+                                    <img src="@share.IdUserShareNavigation.AnhDaiDien" alt="imguser" class="share__user-img" />
+                                    <span class="share__user-name">
+                                        @share.IdUserShareNavigation.TenKhachHang
+                                        <span style="opacity:0.4;font-size:16px">đã chia sẻ bài viết</span>
+                                    </span>
+                                </div>
+                                <div class="center-my-sharepost">@share.NoiDungShare</div>
+                                <hr style="margin-bottom:10px" />
+                                    <div class="grid__center-others-post__no-image">
+                                        <div class="center__bg-name-post__no-image">
+                                        <img class="center__icon-others-post"
+                                                 src="@share.IdUserShareNavigation.AnhDaiDien"
+                                                 alt="User_img" />
+                                    <span class="center__name-others-post">@share.IdUserShareNavigation.TenKhachHang</span>
+                                        </div>
+                                    </div>
+                     }
+                    <div class="center__others-post-caption">@share.IdBaiPostNavigation.Caption</div>
+                    <div class="center__others-post-details">@share.IdBaiPostNavigation.MoTa</div>
+                    <div class="center__others-post-reaction">
+
+                        <div class="center__load-like-reaction" data-share-id="@share.IdPostShare">
+                                @foreach (var react in Model.reactionSharesPosts)
+                                {
+                                    if (react.IdPostShare == share.IdPostShare)
+                                    {
+                                        quantityReactShare += 1;
+                                        if (react.IdUser == ViewBag.IdinforUser)
+                                        {
+                                            checkReactShare = 1;
+                                        }
+                                    }
+                                }
+                                @if (checkReactShare == 0)
+                                {
+                                    <form asp-action="ReactionPostShared" class="form__like_postshare">
+                                        <input asp-for="@Model.ReactionSharePost.IdUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                        <input asp-for="@Model.ReactionSharePost.IdPostShare" type="hidden" value="@share.IdPostShare" />
+                                        <button data-share-id="@share.IdPostShare" class="like__btn-share" type="submit">
+                                            <i class="fa-solid fa-heart others-post-react-icon like__icon-share"></i>
+                                            <span>@quantityReactShare</span>
+                                            <span class="others-post-react-text">Like</span>
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="ReactionPostShared" class="form__like_postshare">
+                                        <input asp-for="@Model.ReactionSharePost.IdUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                        <input asp-for="@Model.ReactionSharePost.IdPostShare" type="hidden" value="@share.IdPostShare" />
+                                        <button data-share-id="@share.IdPostShare" class="like__btn-share" type="submit">
+                                            <i class="fa-solid fa-heart others-post-react-icon like__icon-share active"></i>
+                                            <span>@quantityReactShare</span>
+                                            <span class="others-post-react-text">Like</span>
+                                        </button>
+                                    </form>
+                                }
+                        </div>
+                        <a href="#" class="grid__others-post-reaction comment_post">
+                            <i class="fa-regular fa-comment others-post-react-icon"></i>
+                            <span class="others-post-react-text">Comment</span>
+                        </a>
+                    </div>
+                         <ul class="center__others-post-cmt">
+                    @foreach(var binhluan in Model.BinhLuanShares){
+                        if(share.IdPostShare == binhluan.MaShare){
+                            if(share.IdUserShare == ViewBag.IdinforUser){
+                                <li class="others-post-cmt-items">
+                                    <img class="post-cmt-items-img"
+                                         src="@binhluan.IdUserCmtShareNavigation.AnhDaiDien"
+                                         alt="User_img" />
+                                    <div class="grid__cmt-items">
+                                        <div class="cmt-items-user-name">@binhluan.IdUserCmtShareNavigation.TenKhachHang</div>
+                                        <div class="cmt-items-user-cmt">@binhluan.NoiDungCmtShare</div>
+                                    </div>
+                                    @*
+                                    <a asp-action="DeleteCmt" asp-route-id="@ViewBag.idUser" 
+                                        asp-route-idCmt="@binhluan.MaCmt" asp-route-idUser="@ViewBag.IdinforUser">
+                                        <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                    </a>
+                                    *@
+                                            <form asp-action="DeleteCmtShared" class="form__icon-remove-cmtshare">
+                                                <input name="id" type="hidden" value="@ViewBag.IdUser" />
+                                                <input name="idCmt" type="hidden" value="@binhluan.MaCmtShare" />
+                                                <input name="idUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                                <button type="submit" style=" background-color: transparent;
+                                                        border: none; ">
+                                                    <i class="fa-solid fa-xmark icon-remove-cmtshare"></i>
+                                                </button>
+                                            </form>
+                                </li>
+                            } else {
+                                if(binhluan.IdUserCmtShare == ViewBag.IdinforUser){
+                                    <li class="others-post-cmt-items">
+                                        <img class="post-cmt-items-img"
+                                             src="@binhluan.IdUserCmtShareNavigation.AnhDaiDien"
+                                             alt="User_img" />
+                                        <div class="grid__cmt-items">
+                                            <div class="cmt-items-user-name">@binhluan.IdUserCmtShareNavigation.TenKhachHang</div>
+                                            <div class="cmt-items-user-cmt">@binhluan.NoiDungCmtShare</div>
+                                        </div>
+                                        @*
+                                        <a asp-action="DeleteCmt" asp-route-id="@ViewBag.idUser" 
+                                            asp-route-idCmt="@binhluan.MaCmt" asp-route-idUser="@ViewBag.IdinforUser">
+                                            <i class="fa-solid fa-xmark icon-remove-cmt"></i>
+                                        </a>
+                                        *@
+                                            <form asp-action="DeleteCmtShared" class="form__icon-remove-cmtshare">
+                                                <input name="id" type="hidden" value="@ViewBag.IdUser" />
+                                                <input name="idCmt" type="hidden" value="@binhluan.MaCmtShare" />
+                                                <input name="idUser" type="hidden" value="@ViewBag.IdinforUser" />
+                                                <button type="submit" style=" background-color: transparent;
+                                                        border: none; ">
+                                                    <i class="fa-solid fa-xmark icon-remove-cmtshare"></i>
+                                                </button>
+                                            </form>
+                                    </li>
+                                }else {
+                                    <li class="others-post-cmt-items">
+                                        <img class="post-cmt-items-img"
+                                             src="@binhluan.IdUserCmtShareNavigation.AnhDaiDien"
+                                             alt="User_img" />
+                                        <div class="grid__cmt-items">
+                                            <div class="cmt-items-user-name">@binhluan.IdUserCmtShareNavigation.TenKhachHang</div>
+                                            <div class="cmt-items-user-cmt">@binhluan.NoiDungCmtShare</div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        }
+                    }
+                            <form class="form__others-post-cmt-share">
+                                <img class="post-cmt-items-img"
+                                     src="@ViewBag.AnhDaiDien"
+                                     alt="User_img" />
+                                <div class="form__user-post">
+                                    <input asp-for="@Model.BinhLuanShare.NoiDungCmtShare"
+                                           class="form__user-post-input"
+                                           type="text"
+                                           placeholder="Viết bình luận..." />
+
+                                    <input asp-for="@Model.BinhLuanShare.MaShare"
+                                           value="@share.IdPostShare"
+                                           class="form__user-post-input"
+                                           type="hidden" />
+                                    <input value="@ViewBag.IdinforUser"
+                                           asp-for="@Model.BinhLuanShare.IdUserCmtShare"
+                                           type="hidden" >
+                                    <button class="form__user-post-submit">Gửi</button>
+                                </div>
+                            </form>
+                         </ul>
+                        </div>
+
+                    }
+
+                }
+            }
+        }
+            </div>
+    <div class="container__right">
+        <ul class="container__right-sidebar">
+            <a href="" class="container__right-items-addgr-button">
+            <li class="container__right-items-addgroup">
+                <i class="fa-solid fa-plus container__right-items--gr-icon"></i>
+                <span class="container__right-title-group">Thêm mới Group chat</span>
+            </li>
+            </a>
+        </ul>
+        <ul class="container__right-sidebar">
+            <a href="#"
+               style="cursor: pointer; text-decoration: none; color: #333"
+               id="click_friends_home">
+            <li class="container__right-items-head">
+                <span class="container__right-items-text"> Bạn bè </span>
+                <i id="icon_friends_home"
+                   class="fa-solid fa-chevron-up container__left-message--icon"></i>
+            </li>
+            </a> 
+            @foreach(var ListFriend in Model.BanBes)
+            {
+                if (ListFriend.IdUser1 == ViewBag.IdinforUser && ListFriend.TrangThai == 1)
+                {
+                        <form class="form__displayRoomchat" asp-action="RoomChat">
+                            <input asp-for="@Model.RoomChat.MaUser1" type="hidden" value="@ListFriend.IdUser1"/>
+                            <input asp-for="@Model.RoomChat.MaUser2" type="hidden" value="@ListFriend.IdUser2"/>
+                            <button type="submit" class="container__right-items show_friends_home">
+                                <img class="right-items-icon"
+                                     src="@ListFriend.IdUser2Navigation.AnhDaiDien"
+                                     alt="User_imgae" />
+                                <div class="grid__right-items-username">
+                                <div class="right-items-username">@ListFriend.IdUser2Navigation.TenKhachHang</div>
+                                    <div class="right-items-message">
+                                        <span class="right-items-message--status"></span>
+                                        Đang online
+                                    </div>
+                                </div>
+                            </button>
+                        </form>
+                } else if(ListFriend.IdUser2 == ViewBag.IdinforUser && ListFriend.TrangThai == 1){
+                        <form class="form__displayRoomchat" asp-action="RoomChat" >
+                            <input asp-for="@Model.RoomChat.MaUser1" type="hidden" value="@ListFriend.IdUser2"/>
+                            <input asp-for="@Model.RoomChat.MaUser2" type="hidden" value="@ListFriend.IdUser1"/>
+                            <button type="submit" class="container__right-items show_friends_home">
+                                <img class="right-items-icon"
+                                 src="@ListFriend.IdUser1Navigation.AnhDaiDien"
+                                     alt="User_imgae" />
+                                <div class="grid__right-items-username">
+                                <div class="right-items-username">@ListFriend.IdUser1Navigation.TenKhachHang</div>
+                                    <div class="right-items-message">
+                                        <span class="right-items-message--status"></span>
+                                        Đang online
+                                    </div>
+                                </div>
+                            </button>
+                        </form>
+                }
+            }
+        </ul>
+
+        <ul class="container__right-sidebar">
+            <a href="#"
+               style="cursor: pointer; text-decoration: none; color: #333"
+               id="click_gr_home">
+            <li class="container__right-items-head">
+                <span class="container__right-items-text"> Nhóm </span>
+                <i id="icon_gr_home"
+                   class="fa-solid fa-chevron-up container__left-message--icon"></i>
+            </li>
+            </a>
+
+            <div class="loadGroup">
+                @if (Model.groupMembers != null)
+                    @foreach (var gr in Model.groupMembers)
+                    {
+                        if (gr.UserId == ViewBag.IdinforUser)
+                        {
+                        <a class="show_gr_home displayGrBox" data-grid="@gr.GroupId">
+                            <li>
+                                <img class="right-items-icon"
+                                     src="@gr.Group.GroupImage"
+                                     alt="Gr_imgae" />
+                                <div class="grid__right-items-username">
+                                    <div class="right-items-username">@gr.Group.GroupName</div>
+                                </div>
+                            </li>
+                        </a>
+                        }
+                    }
+                else
+                {
+
+                }
+            </div>
+        </ul>
+    </div>
+    @*---------------RoomChat-----------*@
+    <div class="show__container__footer-roomchat">
+
+    </div>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__body">
+        <ul class="modal__list--addgroup">
+            <h2 class="modal__title">Thêm người</h2>
+            <ul class="items__added-friends-list">
+            </ul>
+            <h2 class="modal__title">Danh sách bạn bè</h2>
+            @foreach (var friend in Model.BanBes)
+            {
+                if (friend.IdUser1 == ViewBag.IdinforUser && friend.TrangThai == 1)
+                {
+                    <li>
+                        <a class="items__addgroup" data-id="@friend.IdUser2Navigation.MaKhachHang">
+                            <div class="grid__items-left">
+                                <img class="items__left--img"
+                                     src="@friend.IdUser2Navigation.AnhDaiDien"
+                                     alt="images" />
+                                <span class="items__left--name">@friend.IdUser2Navigation.TenKhachHang</span>
+                            </div>
+                            <div class="grid__items-right">
+                                <input class="grid__items-right-check" type="checkbox" />
+                            </div>
+                        </a>
+                    </li>
+                }
+                else if (friend.IdUser2 == ViewBag.IdinforUser && friend.TrangThai == 1)
+                {
+                    <li>
+                        <a class="items__addgroup"  data-id="@friend.IdUser1Navigation.MaKhachHang">
+                            <div class="grid__items-left">
+                                <img class="items__left--img"
+                                     src="@friend.IdUser1Navigation.AnhDaiDien"
+                                     alt="images" />
+                                <span class="items__left--name">@friend.IdUser1Navigation.TenKhachHang</span>
+                            </div>
+                            <div class="grid__items-right">
+                                <input class="grid__items-right-check" type="checkbox" />
+                            </div>
+                        </a>
+                    </li>
+                }
+            }
+            <a class="confirm_addGroup" asp-action="confirm_addGroup">Tạo mới group</a>
+        </ul>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script>
+  //  var click_text_home = document.querySelector("#click_text_home");
+    var click_friends_home = document.querySelector("#click_friends_home");
+    var click_gr_home = document.querySelector("#click_gr_home");
+
+  /*  click_text_home.onclick = function (e) {
+        e.preventDefault();
+        document.querySelector("#show_text_home").classList.toggle("active");
+        var icon_text_home = document.getElementById("icon_text_home");
+        if (icon_text_home.classList.contains("fa-chevron-up")) {
+            icon_text_home.classList.remove("fa-chevron-up");
+            icon_text_home.classList.add("fa-chevron-down");
+        } else {
+            icon_text_home.classList.remove("fa-chevron-down");
+            icon_text_home.classList.add("fa-chevron-up");
+        }
+    };*/
+    click_friends_home.onclick = function (e) {
+        e.preventDefault();
+        document.querySelectorAll(".show_friends_home").forEach(function (e) {
+            e.classList.toggle("active");
+        });
+        var icon_friends_home = document.getElementById("icon_friends_home");
+        if (icon_friends_home.classList.contains("fa-chevron-up")) {
+            icon_friends_home.classList.remove("fa-chevron-up");
+            icon_friends_home.classList.add("fa-chevron-down");
+        } else {
+            icon_friends_home.classList.remove("fa-chevron-down");
+            icon_friends_home.classList.add("fa-chevron-up");
+        }
+    };
+    click_gr_home.onclick = function (e) {
+        e.preventDefault();
+        document.querySelector('.loadGroup').classList.toggle("active");
+        document.querySelectorAll(".show_gr_home").forEach(function (e) {
+            e.classList.toggle("active");
+        })
+        var icon_gr_home = document.getElementById("icon_gr_home");
+        if (icon_gr_home.classList.contains("fa-chevron-up")) {
+            icon_gr_home.classList.remove("fa-chevron-up");
+            icon_gr_home.classList.add("fa-chevron-down");
+        } else {
+            icon_gr_home.classList.remove("fa-chevron-down");
+            icon_gr_home.classList.add("fa-chevron-up");
+        }
+    };
+    var click_message = document.querySelector(".grid__left-message");
+    click_message.onclick = function (e) {
+        e.preventDefault();
+        document
+            .querySelector(".container__left-message-items")
+            .classList.toggle("active");
+        var icon_message = document.querySelector(
+            ".container__left-message--icon"
+        );
+        if (icon_message.classList.contains("fa-chevron-up")) {
+            icon_message.classList.remove("fa-chevron-up");
+            icon_message.classList.add("fa-chevron-down");
+        } else {
+            icon_message.classList.remove("fa-chevron-down");
+            icon_message.classList.add("fa-chevron-up");
+        }
+    };
+
+    $(document).on('submit','.form__displayRoomchat', function (e) {
+        e.preventDefault();
+        var formChat = $(this).serialize();
+        $.ajax({
+            url: '/InforPersonal/RoomChat',
+            type: 'POST',
+            data: formChat,
+            success: function (data) {
+                displayRoomchat()
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+
+    function displayRoomchat() {
+        $.ajax({
+            url: '/InforPersonal/DisplayRoomChat',
+            type: 'GET',
+            success: function (response) {
+                $('.show__container__footer-roomchat').html(response);
+                var chatContainer = $('.container__footer-roomchat-content');
+                chatContainer.scrollTop(chatContainer.prop("scrollHeight"));
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+    
+    $(document).on('submit', '.form__icon-remove-cmt', function (e) {
+        e.preventDefault();
+        var formDeleteCmt = $(this).serialize();
+        $.ajax({
+            url: '/InforPersonal/DeleteCmt',
+            type: 'POST',
+            data: formDeleteCmt,
+            success: function (data) {
+                Swal.fire(
+                    'Success!',
+                    'đã xóa bình luận!',
+                    'success'
+                ).then(() => {
+                    LoadDeleteCmt()
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+
+    function LoadDeleteCmt() {
+        $.ajax({
+            url: '/InforPersonal/LoadCmt',
+            type: 'GET',
+            success: function (response) {
+                $('.center__others-post-cmt.active').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+    /////////////////////////////
+    $(document).on('submit', '.form__like_post', function (e) {
+        e.preventDefault();
+        var form__like_post = $(this).serialize();
+        var like_button = $(this).find('.like__btn-post');
+        var postId = like_button.data('post-id');
+        $.ajax({
+            url: '/InforPersonal/ReactionPost',
+            type: 'POST',
+            data: form__like_post,
+            success: function (data) {
+                like_button.find('.like__icon-post').toggleClass('active');
+                LoadLike(postId);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+
+    function LoadLike(postId) {
+        $.ajax({
+            url: '/InforPersonal/LoadLike',
+            type: 'GET',
+            data: { postId: postId },
+            success: function (response) {
+                $('.center__load-like-reaction[data-post-id="' + postId + '"]').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+    ///////////////////
+    // Share post
+    $(document).on('submit', '.form__like_postshare', function (e) {
+        e.preventDefault();
+        var form__like_share = $(this).serialize();
+        var like_button = $(this).find('.like__btn-share');
+        var postId = like_button.data('share-id');
+        $.ajax({
+            url: '/InforPersonal/ReactionPostShared',
+            type: 'POST',
+            data: form__like_share,
+            success: function (data) {
+                like_button.find('.like__icon-share').toggleClass('active');
+                LoadLikeShare(postId);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+
+    function LoadLikeShare(postId) {
+        $.ajax({
+            url: '/InforPersonal/LoadLikeShared',
+            type: 'GET',
+            data: { postId: postId },
+            success: function (response) {
+                $('.center__load-like-reaction[data-share-id="' + postId + '"]').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+    //
+    $(document).on('submit', '.form__icon-remove-cmtshare', function (e) {
+        e.preventDefault();
+        var formDeleteCmtShare = $(this).serialize();
+        $.ajax({
+            url: '/InforPersonal/DeleteCmtShared',
+            type: 'POST',
+            data: formDeleteCmtShare,
+            success: function (data) {
+                Swal.fire(
+                    'Success!',
+                    'đã xóa bình luận!',
+                    'success'
+                ).then(() => {
+                    LoadDeleteCmtShare()
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+
+    function LoadDeleteCmtShare() {
+        $.ajax({
+            url: '/InforPersonal/LoadCmtShared',
+            type: 'GET',
+            success: function (response) {
+                $('.center__others-post-cmt.active').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // End share post
+    $(document).ready(function () {
+        $('.savePostForm').submit(function (event) {
+            event.preventDefault(); // Ngăn chặn việc submit form mặc định
+
+            $.ajax({
+                url: '/Home/SavePost',
+                type: 'POST',
+                data: $(this).serialize(), // Lấy dữ liệu từ form
+                success: function (response) {
+                    Swal.fire(
+                        'Success!',
+                        response.message,
+                        'success'
+                    );  // Hiển thị thông báo alert với thông báo từ server
+                },
+                error: function () {
+                    Swal.fire(
+                        'Error!',
+                        'Đã có lỗi',
+                        'error'
+                    );
+                }
+            });
+        });
+    });
+
+    /*-----------------model*/
+
+    const form_addgr = document.querySelector('.container__right-items-addgr-button');
+    const items = document.querySelector("#modal");
+    form_addgr.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector('.loadGroup').classList.remove("active");
+        document.querySelectorAll(".show_gr_home").forEach(function (e) {
+            e.classList.remove("active");
+        })
+        const icon_gr_home = document.getElementById("icon_gr_home");
+        if (icon_gr_home.classList.contains("fa-chevron-up")) {
+        } else {
+            icon_gr_home.classList.remove("fa-chevron-down");
+            icon_gr_home.classList.add("fa-chevron-up");
+        }
+        items.classList.toggle("active");
+        LoadAddedFriends();
+    });
+    const modal = document.querySelector(".modal");
+    modal.onclick = function () {
+        modal.classList.remove("active");
+        document.querySelectorAll(".grid__items-right-check").forEach(function (e) {
+            e.checked = false;
+        })
+        fetch('/home/clearList', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
+    const form_list = document.querySelector(".modal__body");
+    form_list.onclick = function (e) {
+        e.stopPropagation();
+    };
+
+    const form_addGr = document.querySelector(".confirm_addGroup");
+    form_addGr.onclick = function (e) {
+        modal.classList.remove("active");
+        document.querySelectorAll(".grid__items-right-check").forEach(function (e) {
+            e.checked = false;
+        })
+    };
+
+    /*-------------Load Gr chat*/
+    $(document).ready(function () {
+        $('.confirm_addGroup').click(function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: '/Home/confirm_addGroup',
+                success: function (response) {
+                    LoadMessageGroup();
+                    LoadGroup();
+                },
+                error: function (xhr, status, error) {
+                    alert("Error: " + error);
+                }
+            });
+        });
+    });
+
+    function LoadMessageGroup() {
+        $.ajax({
+            url: '/Home/DisplayMessageGroupFirst',
+            type: 'GET',
+            success: function (response) {
+                $('.show__container__footer-roomchat').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function LoadGroup() {
+        $.ajax({
+            url: '/Home/loadGroup',
+            type: 'GET',
+            success: function (responses) {
+                $('.loadGroup').html(responses);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+    /*-------------------Display Group Chat */
+    $(document).ready(function () {
+        $('.displayGrBox').click(function (event) {
+            event.preventDefault();
+            var GrId = $(this).data('grid');
+
+            $.ajax({
+                type: "GET",
+                url: '/Home/DisplayMessageGroup',
+                data: { grId: GrId },
+                success: function (response) {
+                    $('.show__container__footer-roomchat').html(response);
+                    var chatContainerGr = $('.container__footer-roomchat-content');
+                    chatContainerGr.scrollTop(chatContainerGr.prop("scrollHeight"));
+                },
+                error: function (xhr, status, error) {
+                    alert('Error: ' + error);
+                }
+            });
+        });
+    });
+    //***********
+
+    $(document).ready(function () {
+        $('.items__addgroup').click(function (event) {
+            event.preventDefault();
+            var friendId = $(this).data('id');
+
+            var checkbox = $(this).find('.grid__items-right-check');
+            checkbox.prop('checked', !checkbox.prop('checked'));
+
+            if (checkbox.checked) {
+                checkbox.checked = false;
+            } else {
+                checkbox.checked = true;
+            };
+            $.ajax({
+                type: "POST",
+                url: '/Home/Added_Friends',
+                data: { id: friendId },
+                success: function (response) {
+                    LoadAddedFriends();
+                },
+                error: function (xhr, status, error) {
+                    alert('Error: ' + error);
+                }
+            });
+        });
+    });
+    function LoadAddedFriends() {
+        $.ajax({
+            url: '/Home/displayFriends',
+            type: 'GET',
+            success: function (response) {
+                $('.items__added-friends-list').html(response);
+                addItemToList();
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+    /******************/
+    const myList = document.querySelector('.items__added-friends-list');
+
+    function autoScrollToEnd() {
+        myList.scrollLeft = myList.scrollWidth;
+    }
+
+    function addItemToList() {
+        let newItem = document.createElement('li');
+
+        myList.appendChild(newItem);
+
+        autoScrollToEnd();
+    }
+</script>
+   

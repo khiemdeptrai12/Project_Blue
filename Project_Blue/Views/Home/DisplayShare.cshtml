@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Project_Blue.Models.PostACmt
+<div class="container__center-share">
+    <div class="container__center-others-share">
+        <div class="grid__share">
+            <img src="@ViewBag.AnhDaiDien"
+                 alt="imguser"
+                 class="share__user-img" />
+            <span class="share__user-name">@ViewBag.TenUser</span>
+        </div>
+        <form asp-action="BaiPostShared" class="form__sharepost">
+
+            <input asp-for="@Model.SharePost.IdUserShare" type="hidden" value="@ViewBag.idUser" />
+            <input asp-for="@Model.SharePost.IdBaiPost" type="hidden" value="@ViewBag.idPost" />
+            <input asp-for="@Model.SharePost.SharedTime" type="hidden" value="@DateTime.Now.ToString()" />
+            <input asp-for="@Model.SharePost.NoiDungShare"
+                   type="text"
+                   class="inp__sharepost"
+                   placeholder="Hãy nhập nội dung..." />
+            <button type="submit" class="btn__sharepost">Share</button>
+        </form>
+@foreach (var item in Model.BaiPostList)
+{ 
+    if(item.MaBaiPost == ViewBag.idPost){
+        <div class="grid__center-others-post">
+            <img class="center__img-others-post"
+                 src="@item.AnhBaiPost"
+                 alt="others-post" />
+            <div class="center__bg-name-post">
+                <img class="center__icon-others-post"
+                     src="@item.MaNguoiPostNavigation.AnhDaiDien"
+                     alt="User_img" />
+                <span class="center__name-others-post">@item.MaNguoiPostNavigation.TenKhachHang</span>
+            </div>
+        </div>
+        <div class="center__others-post-caption">
+            @item.Caption <span class="center__others-post-time">@item.PostedTime</span>
+        </div>
+        <div class="center__others-post-details">
+            @item.MoTa
+        </div>
+        break;
+    }
+}
+    </div>
+</div>

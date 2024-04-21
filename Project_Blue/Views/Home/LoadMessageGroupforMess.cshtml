@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model Project_Blue.Models.PostACmt
+@foreach (var item in Model.groupChats)
+{
+    @if (item.GroupId == @ViewBag.idGr)
+    {
+                @*--------------Đoạn chat-----------*@
+                    @foreach (var mes in Model.messageGroups)
+                    {
+                        @if (item.GroupId == mes.GroupId)
+                        {
+                            @if (mes.UserId == @ViewBag.IdUser && mes.Text != null)
+                            {
+                                <div class="footer-roomchat-mycontent">
+                                    <span class="footer-roomchat-mycontent-text">
+                                        @mes.Text
+                                    </span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="footer-roomchat-yourcontent">
+                                    <span class="roomchat-yourcontent__name">@mes.User.TenKhachHang</span>
+                                    <div style="display:flex;align-items:center">
+                                        <img style="margin-right: 4px;;width: 36px; height: 36px; border-radius: 50%" src="@mes.User.AnhDaiDien" />
+                                        <span class="footer-roomchat-yourcontent-text">
+                                            @mes.Text
+                                        </span>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                @*--------------Đoạn chat-----------*@
+    }
+}

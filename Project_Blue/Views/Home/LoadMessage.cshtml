@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model Project_Blue.Models.PostACmt
+@foreach (var item in Model.roomChats)
+{
+    @if (item.MaUser1 == ViewBag.Iduser && item.MaUser2 == ViewBag.MyId)
+    {
+                @*--------------Đoạn chat-----------*@
+                    @foreach (var mes in Model.messages)
+                    {
+                        @if (item.MaPhong == mes.IdRoomchat)
+                        {
+                            @if (mes.IdUser == item.MaUser2 && mes.NoiDung != null)
+                            {
+                                <div class="footer-roomchat-mycontent">
+                                    <span class="footer-roomchat-mycontent-text">
+                                        @mes.NoiDung
+                                    </span>
+                                </div>
+                            }
+                            else if (mes.IdUser == item.MaUser1 && mes.NoiDung != null)
+                            {
+                                <div class="footer-roomchat-yourcontent">
+                                    <span class="footer-roomchat-yourcontent-text">
+                                        @mes.NoiDung
+                                    </span>
+                                </div>
+                            }
+                        }
+                    }
+                @*--------------Đoạn chat-----------*@
+        break;
+    }
+    else if (item.MaUser2 == ViewBag.Iduser && item.MaUser1 == ViewBag.MyId)
+    {
+                @*--------------Đoạn chat-----------*@
+                    @foreach (var mes in Model.messages)
+                    {
+                        if (item.MaPhong == mes.IdRoomchat)
+                        {
+                            @if (mes.IdUser == item.MaUser1 && mes.NoiDung != null)
+                            {
+                                <div class="footer-roomchat-mycontent">
+                                    <span class="footer-roomchat-mycontent-text">
+                                        @mes.NoiDung
+                                    </span>
+                                </div>
+                            }
+                            else if (mes.IdUser == item.MaUser2 && mes.NoiDung != null)
+                            {
+                                <div class="footer-roomchat-yourcontent">
+                                    <span class="footer-roomchat-yourcontent-text">
+                                        @mes.NoiDung
+                                    </span>
+                                </div>
+                            }
+                        }
+                    }
+                @*--------------Đoạn chat-----------*@
+        break;
+    }
+}
+
+<script>
+    document.querySelector('.close__roomchat').onclick = function (e) {
+        document.querySelector('.container__footer-roomchat').classList.remove('active');
+    }
+</script>
