@@ -153,7 +153,7 @@ namespace Project_Blue.Controllers
             };
             return View(PostACmt);
         }
-
+        
         [HttpPost]
         public IActionResult DeletePost(int id)
         {

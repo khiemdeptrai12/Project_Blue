@@ -102,15 +102,6 @@ namespace Project_Blue.Controllers
             return RedirectToAction("Login", "Login", new { checkLogin  = 0 });
         }
 
-            if (NameSearch == null)
-            {
-                NameSearch = "empty";
-            }
-            var _NameSearch = Convert.ToString(NameSearch);
-            HttpContext.Session.SetString("NameSearch_" + idUser, _NameSearch);
-            return RedirectToAction("GetSearchUser");
-        }
-
         [HttpGet]
         public IActionResult GetSearchUser(int idUser)
         {
@@ -146,27 +137,7 @@ namespace Project_Blue.Controllers
             return RedirectToAction("GetSearchUser");
         }
        
-        [HttpGet]
-        public IActionResult GetSearchUser(int idUser)
-        {
-            ViewBag.idUser = idUser;
-            ViewBag.NameSearch = HttpContext.Session.GetString("NameSearch_" + idUser);
-            var User = db.ThongTinCaNhans.ToList();
-            return View(User);
-        }
-        public IActionResult PostStatus(int idUser)
-        {
-            var UserId = HttpContext.Session.GetInt32("userId_" + idUser);
-            var User = db.ThongTinCaNhans.FirstOrDefault(p => p.MaKhachHang == UserId);
-            if (User != null)
-            {
-                ViewBag.IdinforUser = User.MaKhachHang;
-                ViewBag.TenUser = User.TenKhachHang;
-                ViewBag.AnhDaiDien = User.AnhDaiDien;
-            }
-            ViewBag.idUser = UserId;
-            return View();
-        }
+       
 
         [HttpPost]
         public async Task<IActionResult> BaiPost(BaiPost baiPost, IFormFile anhBaiPost)
