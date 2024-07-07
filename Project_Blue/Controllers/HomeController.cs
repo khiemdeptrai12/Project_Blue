@@ -22,6 +22,7 @@ namespace Project_Blue.Controllers
         {
             _logger = logger;
         }
+        int s = 2;
         public IActionResult Home(int? id,int? checkLogin)
         {
             if (HttpContext.Session.Keys.Contains("userId_"+ id))
@@ -101,7 +102,7 @@ namespace Project_Blue.Controllers
             }
             return RedirectToAction("Login", "Login", new { checkLogin  = 0 });
         }
-
+        
         [HttpGet]
         public IActionResult GetSearchUser(int idUser)
         {
