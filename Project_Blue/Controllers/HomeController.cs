@@ -17,6 +17,7 @@ namespace Project_Blue.Controllers
         private readonly ILogger<HomeController> _logger;
         ProjectBlueContext db = new ProjectBlueContext();
 
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -43,6 +44,7 @@ namespace Project_Blue.Controllers
                             .Include(p => p.IdBaiPostNavigation)
                             .Include(p => p.IdUserShareNavigation)
                             .ToList();
+                        var a = 2;
                         var listSAP = new List<dynamic>();
                         listSAP.AddRange(listBaiPost);
                         listSAP.AddRange(listSharePost);
