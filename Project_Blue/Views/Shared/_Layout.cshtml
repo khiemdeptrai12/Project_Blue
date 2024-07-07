@@ -227,6 +227,63 @@
         img_user.onclick = function (e) {
             show_menu.classList.toggle('active');
         }
+
+        $(document).on('submit','#searchUser', function (e) {
+            e.preventDefault();
+            var formSearch = $(this).serialize();
+            var NameSearch = $('#id_search_head').val();
+            var idUser = $('#id_user').val();
+
+            $.ajax({
+                url: '/Home/SeachUser',
+                type: 'POST',
+                data: formSearch + "&NameSearch=" + NameSearch + "&idUser=" + idUser,
+                success: function (data) {
+                    loadSearch()
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        function loadSearch() {
+            var idUser = $('#id_user').val();
+            $.ajax({
+                url: '/Home/GetSearchUser',
+                type: 'GET',
+                data: { idUser: idUser },
+                success: function (response) {
+                    $('.header__search--user').html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+        var SearchInput = document.querySelector('.header__list-items-search');
+        var ShowSearch = document.querySelector('.header__search--user');
+        var isClickedInside = false;
+        SearchInput.addEventListener('focus', function () {
+            ShowSearch.style.display = 'block';
+        });
+
+        ShowSearch.addEventListener('mousedown', function (event) {
+            isClickedInside = true;
+        });
+
+        SearchInput.addEventListener('blur', function () {
+                if (!isClickedInside) {
+                    ShowSearch.style.display = 'none';
+                }
+                isClickedInside = false;
+        });
+
+        var show_menu = document.querySelector('.show__menu-header-user');
+        var img_user = document.querySelector('.header__user-img');
+        img_user.onclick = function (e) {
+            show_menu.classList.toggle('active');
+        }
     </script>
 </body>
 </html>

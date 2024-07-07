@@ -23,6 +23,7 @@ namespace Project_Blue.Controllers
                 ViewBag.TenUserSeach = UserSearch.TenKhachHang;
                 var listBaiPost = db.BaiPosts
                     .Include(p => p.MaNguoiPostNavigation)
+                    .OrderByDescending(x => x.MaBaiPost)
                     .ToList();
                 var listCmt = db.BinhLuans.ToList();
                 var listTTCN = db.ThongTinCaNhans
@@ -59,6 +60,7 @@ namespace Project_Blue.Controllers
                 SavePost savePost = new SavePost();
                 var PostACmt = new PostACmt
                 {
+                    BaiPostList = listBaiPost,
                     BinhLuanList = listCmt,
                     thongTinCaNhans = listTTCN,
                     BanBes = listBanbe,
@@ -236,12 +238,14 @@ namespace Project_Blue.Controllers
         public IActionResult LoadLike(int postId)
         {
             ViewBag.postId = postId;
+            var baiPosts = db.BaiPosts.ToList();
             var react = db.ReactionPosts.ToList();
             var idUser = TempData.Peek("UserId") as int?;
             ViewBag.IdUser = idUser;
             ReactionPost reactionPost = new ReactionPost();
             PostACmt postACmt = new PostACmt
             {
+                BaiPostList = baiPosts,
                 reactionPosts = react,
                 ReactionPost = reactionPost
             };

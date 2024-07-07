@@ -837,6 +837,7 @@ body {
 }
 
 .icon-remove-cmt {
+    margin-left: 10px;
     font-size: 20px;
     cursor: pointer;
 }

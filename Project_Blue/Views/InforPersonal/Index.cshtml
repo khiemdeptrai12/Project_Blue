@@ -304,13 +304,13 @@
                                         <i class="fa-solid fa-bookmark icon-save-post"></i>
                                     </button>
                                 </form>
-                                <form asp-action="DeletePost" style="height:40px">
+                            <form asp-action="DeletePost" style="height:40px">
                                     <input type="hidden" name="maBaiPost" value="@post.MaBaiPost" />
-                                    <input type="hidden" name="idUser" value="@ViewBag.IdinforUser" />
-                                    <button class="grid__icon-remove-post" type="submit" >
-                                        <i class="fa-solid fa-xmark icon-remove-post"></i>
-                                    </button>
-                                </form>
+                                <input type="hidden" name="idUser" value="@ViewBag.IdinforUser" />
+                                <button class="grid__icon-remove-post" type="submit" >
+                                    <i class="fa-solid fa-xmark icon-remove-post"></i>
+                                </button>
+                            </form>
                             </div>
                             <div class="grid__center-others-post">
                                 <img class="center__img-others-post"
@@ -341,13 +341,13 @@
                                     <i class="fa-solid fa-bookmark icon-save-post"></i>
                                 </button>
                                 </form>
-                                <form asp-action="DeletePost" style="height:40px">
+                            <form asp-action="DeletePost" style="height:40px">
                                     <input type="hidden" name="maBaiPost" value="@post.MaBaiPost" />
-                                    <input type="hidden" name="idUser" value="@ViewBag.IdinforUser" />
-                                    <button class="grid__icon-remove-post" type="submit">
-                                        <i class="fa-solid fa-xmark icon-remove-post"></i>
-                                    </button>
-                                </form>
+                                <input type="hidden" name="idUser" value="@ViewBag.IdinforUser" />
+                                <button class="grid__icon-remove-post" type="submit">
+                                    <i class="fa-solid fa-xmark icon-remove-post"></i>
+                                </button>
+                            </form>
                             </div>
                             <div class="grid__center-others-post__no-image">
                                 <div class="center__bg-name-post__no-image">
@@ -404,9 +404,10 @@
                             </a>
                              <a asp-controller="InforPersonal" asp-action="DisplayShare" asp-route-idUser="@ViewBag.IdinforUser"
                                asp-route-idPost="@post.MaBaiPost" class="grid__others-post-share">
-                                 <i class="fa-regular fa-share-from-square others-post-react-icon"></i>
-                                 <span class="others-post-react-text">Share</span>
+                                <i class="fa-regular fa-share-from-square others-post-react-icon"></i>
+                                <span class="others-post-react-text">Share</span>
                              </a>
+                            </div>
                         </div>
                         <ul class="center__others-post-cmt">
                             @foreach (var binhluan in Model.BinhLuanList)
@@ -513,7 +514,7 @@
                                         <button data-post-id="@post.MaBaiPost" class="like__btn-post" type="submit">
                                             <i class="fa-solid fa-heart others-post-react-icon like__icon-post"></i>
                                             <span>@quantityReact</span>
-                                            <span class="others-post-react-text">Like</span>
+                            <span class="others-post-react-text">Like</span>
                                         </button>
                                     </form>
                                 }
@@ -529,7 +530,7 @@
                                         </button>
                                     </form>
                                 }
-                            </div>
+                        </div>
                         <a href="#" class="grid__others-post-reaction comment_post">
                             <i class="fa-regular fa-comment others-post-react-icon"></i>
                             <span class="others-post-react-text">Comment</span>
@@ -539,6 +540,7 @@
                             <i class="fa-regular fa-share-from-square others-post-react-icon"></i>
                             <span class="others-post-react-text">Share</span>
                         </a>
+                        </div>
                     </div>
                          <ul class="center__others-post-cmt">
                     @foreach(var binhluan in Model.BinhLuanList){
@@ -629,11 +631,11 @@
                                 </div>
                             </form>
                          </ul>
-                        </div>
+                </div>
+                    
+                        }
 
                     }
-
-                }
             } else if (items.GetType() == typeof(SharePost))
             {
             var share = (SharePost)items;
@@ -1021,7 +1023,7 @@
                     }
 
                 }
-            }
+                    }
         }
             </div>
     <div class="container__right">
@@ -1032,6 +1034,15 @@
                 <span class="container__right-title-group">Thêm mới Group chat</span>
             </li>
             </a>
+            <li id="show_text_home" class="container__right-items">
+                <img class="right-items-icon"
+                     src="/imagesUser/User.png"
+                     alt="User_imgae" />
+                <div class="grid__right-items-username">
+                    <div class="right-items-username">Em</div>
+                    <div class="right-items-message">Sao anh chưa về</div>
+                </div>
+            </li>
         </ul>
         <ul class="container__right-sidebar">
             <a href="#"
@@ -1103,13 +1114,13 @@
                         {
                         <a class="show_gr_home displayGrBox" data-grid="@gr.GroupId">
                             <li>
-                                <img class="right-items-icon"
+                <img class="right-items-icon"
                                      src="@gr.Group.GroupImage"
                                      alt="Gr_imgae" />
-                                <div class="grid__right-items-username">
+                <div class="grid__right-items-username">
                                     <div class="right-items-username">@gr.Group.GroupName</div>
-                                </div>
-                            </li>
+                </div>
+            </li>
                         </a>
                         }
                     }
@@ -1285,7 +1296,7 @@
                     'đã xóa bình luận!',
                     'success'
                 ).then(() => {
-                    LoadDeleteCmt()
+                LoadDeleteCmt()
                 });
             },
             error: function (xhr, status, error) {

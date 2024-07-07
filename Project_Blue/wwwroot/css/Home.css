@@ -417,6 +417,18 @@ body {
     opacity: 0.5;
 }
 
+.form__user-post-submit {
+    color: #02a5ea;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form__user-post-submit:hover {
+    opacity: 0.5;
+}
+
 .form__user-post-img {
     cursor: pointer;
     width: 100%;

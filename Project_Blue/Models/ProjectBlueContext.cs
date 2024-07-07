@@ -246,6 +246,22 @@ public partial class ProjectBlueContext : DbContext
             entity.ToTable("ReactionSharePost");
         });
 
+        modelBuilder.Entity<Message>(entity =>
+        {
+            entity.HasKey(e => e.IdMessage);
+
+            entity.ToTable("Message");
+
+            entity.Property(e => e.NoiDung).HasMaxLength(160);
+        });
+
+        modelBuilder.Entity<ReactionPost>(entity =>
+        {
+            entity.HasKey(e => e.IdReaction);
+
+            entity.ToTable("ReactionPost");
+        });
+
         modelBuilder.Entity<RoomChat>(entity =>
         {
             entity.HasKey(e => e.MaPhong);
