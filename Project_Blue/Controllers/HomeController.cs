@@ -22,7 +22,6 @@ namespace Project_Blue.Controllers
         {
             _logger = logger;
         }
-        int s = 2;
         public IActionResult Home(int? id,int? checkLogin)
         {
             if (HttpContext.Session.Keys.Contains("userId_"+ id))
